@@ -1,0 +1,19 @@
+sudo: false
+dist: trusty
+language: python
+python:
+- '3.4'
+- '3.5'
+env:
+- TOX_ENV=flake8
+- TOX_ENV=test
+install:
+- pip install tox
+branches:
+  only:
+  - master
+script:
+- tox -e $TOX_ENV
+after_success:
+- coverage report
+- coveralls
