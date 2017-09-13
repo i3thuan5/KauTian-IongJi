@@ -12,6 +12,7 @@ install:
 branches:
   only:
   - master
+  - /\d+\.\d+\.\d+/
 script:
 - tox -e $TOX_ENV
 after_success:
