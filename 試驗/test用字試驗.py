@@ -15,10 +15,10 @@ class 用字試驗(TestCase):
         self.assertFalse(用字表.有這个字無(字('巧', '0khiau2')))
 
     def test_干焦輕聲(self):
-        self.assertTrue(用字表.有這个字無(字('矣', '0ah4')))
+        self.assertTrue(用字表.有這个字無(字('啦', '0lah4')))
 
     def test_無實調(self):
-        self.assertFalse(用字表.有這个字無(字('矣', 'ah4')))
+        self.assertFalse(用字表.有這个字無(字('啦', 'lah4')))
 
     def test_羅馬字佮羅馬字(self):
         self.assertFalse(用字表.有這个字無(字('lai5', 'lai5')))
