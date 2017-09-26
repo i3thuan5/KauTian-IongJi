@@ -18,7 +18,13 @@ class 用字試驗(TestCase):
         self.assertTrue(用字表.有這个字無(字('矣', '0ah4')))
 
     def test_無實調(self):
-        self.assertTrue(用字表.有這个字無(字('矣', 'ah4')))
+        self.assertFalse(用字表.有這个字無(字('矣', 'ah4')))
 
     def test_羅馬字佮羅馬字(self):
         self.assertFalse(用字表.有這个字無(字('lai5', 'lai5')))
+
+    def test_又音(self):
+        self.assertTrue(用字表.有這个字無(字('觸', 'tau2')))
+
+    def test_例句(self):
+        self.assertTrue(用字表.有這个字無(字('𪜶', '0in1')))
