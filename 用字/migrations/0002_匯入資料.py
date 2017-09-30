@@ -22,6 +22,7 @@ def 匯入用字(app, editor):
 
 class 教典資料:
     詞目總檔網址 = 'https://github.com/g0v/moedict-data-twblg/raw/master/uni/%E8%A9%9E%E7%9B%AE%E7%B8%BD%E6%AA%94.csv'
+    詞目總檔屬性網址 = 'https://github.com/g0v/moedict-data-twblg/raw/master/uni/%E8%A9%9E%E7%9B%AE%E7%B8%BD%E6%AA%94.%E5%B1%AC%E6%80%A7%E5%B0%8D%E7%85%A7.csv'
     又音網址 = 'https://github.com/g0v/moedict-data-twblg/raw/master/uni/%E5%8F%88%E9%9F%B3.csv'
 
     @classmethod
@@ -31,11 +32,17 @@ class 教典資料:
 
     @classmethod
     def _詞目總檔(cls):
+        會使的屬性 = set()
+        with urlopen(cls.詞目總檔屬性網址) as 檔:
+            with io.StringIO(檔.read().decode()) as 資料:
+                for row in DictReader(資料):
+                    if '地名' not in row['屬性'].strip():
+                        會使的屬性.add(row['編號'].strip())
         with urlopen(cls.詞目總檔網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for row in DictReader(資料):
                     音讀 = row['音讀'].strip()
-                    if 音讀 == '':
+                    if 音讀 == '' or row['屬性'].strip() not in 會使的屬性:
                         continue
                     漢字 = row['詞目'].strip()
                     for 一音 in 音讀.split('/'):
