@@ -8,7 +8,7 @@ env:
 - TOX_ENV=flake8
 - TOX_ENV=test
 install:
-- pip install tox
+- pip install tox python-coveralls
 branches:
   only:
   - master
