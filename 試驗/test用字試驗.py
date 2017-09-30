@@ -28,3 +28,6 @@ class 用字試驗(TestCase):
 
     def test_例句(self):
         self.assertTrue(用字表.有這个字無(字('𪜶', '0in1')))
+
+    def test_附錄提掉(self):
+        self.assertFalse(用字表.有這个字無(字('醫', 'penn7')))
