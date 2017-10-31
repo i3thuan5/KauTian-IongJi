@@ -2,3 +2,4 @@ include 版本.py
 include README.md
 include LICENSE
 recursive-include 用字 *.py
+include 用字/用字.json
