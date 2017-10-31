@@ -7,6 +7,7 @@ python:
 env:
 - TOX_ENV=flake8
 - TOX_ENV=test
+- TOX_ENV=build
 install:
 - pip install tai5-uan5-gian5-gi2-kang1-ku7
 - pip install tox python-coveralls
@@ -15,6 +16,7 @@ branches:
   - master
   - /\d+\.\d+\.\d+/
 script:
+- python 產生json
 - tox -e $TOX_ENV
 after_success:
 - coverage report
