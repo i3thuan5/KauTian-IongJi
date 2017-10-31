@@ -8,6 +8,7 @@ env:
 - TOX_ENV=flake8
 - TOX_ENV=test
 install:
+- pip install tai5-uan5-gian5-gi2-kang1-ku7
 - pip install tox
 branches:
   only:
