@@ -24,6 +24,3 @@ class 用字表:
         if 字物件.型 in 標點符號 and 字物件.音 in 標點符號:
             return True
         return False
-
-    def __str__(self):
-        return self.分詞
