@@ -50,5 +50,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(匯入用字, lambda *x:x),
+        # migrations.RunPython(匯入用字, lambda *x:x),
     ]

@@ -1,7 +1,9 @@
 from distutils.core import setup
 from os import walk
 from 版本 import 版本
+from 產生json import 產生json
 
+產生json()
 
 def 揣工具包(頭):
     'setup的find_packages無支援windows中文檔案'
