@@ -9,7 +9,7 @@ env:
 - TOX_ENV=test
 install:
 - pip install tai5-uan5-gian5-gi2-kang1-ku7
-- pip install tox
+- pip install tox python-coveralls
 branches:
   only:
   - master
