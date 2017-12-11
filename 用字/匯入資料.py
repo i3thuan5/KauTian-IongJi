@@ -98,6 +98,7 @@ class 教典字物件:
                             .對齊句物件(整理後漢字, 整理後臺羅)
                             .篩出字物件()
                         ):
-                            yield 字物件
+                            if not 字物件.音[0].isupper():
+                                yield 字物件
                     except Exception as 錯誤:
                         print(錯誤)
