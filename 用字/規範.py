@@ -9,7 +9,7 @@ with open(用字檔名) as 檔案:
     _全部分詞 = set(json.load(檔案))
 
 
-class 用字表:
+class 教典:
 
     @classmethod
     def 全部分詞(cls):
