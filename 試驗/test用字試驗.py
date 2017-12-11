@@ -31,3 +31,6 @@ class 用字試驗(TestCase):
 
     def test_附錄提掉(self):
         self.assertFalse(用字表.有這个字無(字('醫', 'penn7')))
+
+    def test_例句大寫字提掉_驚有輕聲詞(self):
+        self.assertFalse(用字表.有這个字無(字('乎', 'honnh4')))
