@@ -31,3 +31,6 @@ class 用字試驗(TestCase):
 
     def test_附錄提掉(self):
         self.assertFalse(用字表.有這个字無(字('醫', 'penn7')))
+
+    def test_標點符號提掉(self):
+        self.assertFalse(用字表.有這个字無(字('，', ',')))
