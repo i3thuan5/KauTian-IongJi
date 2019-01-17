@@ -13,7 +13,7 @@ def 產生json():
         )
     with open(用字檔名, 'w') as 檔案:
         json.dump(
-            list(全部用字), 檔案,
+            sorted(全部用字), 檔案,
             indent=2,
             ensure_ascii=False
         )
