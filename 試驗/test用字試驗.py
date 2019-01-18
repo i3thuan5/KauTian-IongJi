@@ -22,7 +22,7 @@ class 用字試驗(TestCase):
 
     def test_羅馬字佮羅馬字(self):
         self.assertFalse(用字表.有這个字無(字('lai5', 'lai5')))
-    
+
     def test_又見音表(self):
         self.assertTrue(用字表.有這个字無(字('觸', 'tau2')))
 
@@ -31,10 +31,10 @@ class 用字試驗(TestCase):
 
     def test_附錄地名提掉(self):
         self.assertFalse(用字表.有這个字無(字('醫', 'penn7')))
-  
+
     def test_大寫(self):
         self.assertTrue(用字表.有這个字無(字('啊', 'Ah')))
-    
+
     def test_無這音(self):
         self.assertFalse(用字表.有這个字無(字('媠', 'sui')))
 
