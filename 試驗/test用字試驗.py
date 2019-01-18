@@ -12,25 +12,31 @@ class 用字試驗(TestCase):
         self.assertTrue(用字表.有這个字無(字('來', '0lai5')))
 
     def test_無輕聲(self):
-        self.assertFalse(用字表.有這个字無(字('巧', '0khiau2')))
+        self.assertTrue(用字表.有這个字無(字('巧', '0khiau2')))
 
     def test_干焦輕聲(self):
         self.assertTrue(用字表.有這个字無(字('啦', '0lah4')))
 
     def test_無實調(self):
-        self.assertFalse(用字表.有這个字無(字('啦', 'lah4')))
+        self.assertTrue(用字表.有這个字無(字('啦', 'lah4')))
 
     def test_羅馬字佮羅馬字(self):
         self.assertFalse(用字表.有這个字無(字('lai5', 'lai5')))
 
-    def test_又音(self):
+    def test_又見音表(self):
         self.assertTrue(用字表.有這个字無(字('觸', 'tau2')))
 
-    def test_例句(self):
+    def test_例句表(self):
         self.assertTrue(用字表.有這个字無(字('𪜶', '0in1')))
 
-    def test_附錄提掉(self):
+    def test_附錄地名提掉(self):
         self.assertFalse(用字表.有這个字無(字('醫', 'penn7')))
 
-    def test_例句大寫字提掉_驚有輕聲詞(self):
-        self.assertFalse(用字表.有這个字無(字('乎', 'honnh4')))
+    def test_大寫(self):
+        self.assertTrue(用字表.有這个字無(字('啊', 'Ah')))
+
+    def test_無這音(self):
+        self.assertFalse(用字表.有這个字無(字('媠', 'sui')))
+
+    def test_傳統調符(self):
+        self.assertTrue(用字表.有這个字無(字('成', 'sîng')))
