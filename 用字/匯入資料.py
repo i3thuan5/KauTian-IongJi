@@ -5,8 +5,6 @@ import io
 from urllib.request import urlopen
 
 
-from 臺灣言語工具.解析整理.文章粗胚 import 文章粗胚
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 
@@ -16,12 +14,19 @@ class 教典字物件:
     又音網址 = 'https://github.com/g0v/moedict-data-twblg/raw/master/uni/%E5%8F%88%E9%9F%B3.csv'
     例句網址 = 'https://github.com/g0v/moedict-data-twblg/raw/master/uni/%E4%BE%8B%E5%8F%A5.csv'
 
+    #
+    # 撈出教典的字
+    #
     @classmethod
     def 全部資料(cls):
         yield from cls.詞目總檔()
         yield from cls.又見音表()
         yield from cls.例句()
 
+    #
+    # 主編碼,屬性,詞目,音讀,文白屬性,部首
+    # 6,1,一月日,tsi̍t gue̍h-ji̍t/tsi̍t ge̍h-li̍t,0,
+    #
     @classmethod
     def 詞目總檔(cls):
         會使的屬性 = set()
@@ -39,18 +44,21 @@ class 教典字物件:
                     漢字 = row['詞目'].strip()
                     for 一音 in 音讀.split('/'):
                         臺羅 = 一音.strip()
-                        整理後漢字 = 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 漢字)
-                        整理後臺羅 = 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 臺羅)
                         try:
                             for 字物件 in (
                                 拆文分析器
-                                .對齊組物件(整理後漢字, 整理後臺羅)
+                                .對齊組物件(漢字, 臺羅)
                                 .篩出字物件()
                             ):
                                 yield 字物件
                         except Exception as 錯誤:
                             print(錯誤)
 
+    #
+    # 該詞目在漳泉腔音讀以外的又見音。
+    # 序號 主編碼 又音 又音類型(1.又唸作 2.俗唸作 3.合音唸作)
+    #   3   72    tsa̍p-jī-tsí-tn̂g/tsa̍p-lī-tsí-tn̂g    1
+    #
     @classmethod
     def 又見音表(cls):
         資料 = {}
@@ -59,8 +67,7 @@ class 教典字物件:
                 for row in DictReader(字串資料):
                     主編碼 = row['主編碼'].strip()
                     漢字 = row['詞目'].strip()
-                    音讀 = row['音讀'].split('/')[0].strip()
-                    資料[主編碼] = (漢字, 音讀)
+                    資料[主編碼] = 漢字
 
         with urlopen(cls.又音網址) as 檔:
             with io.StringIO(檔.read().decode()) as 字串資料:
@@ -68,37 +75,37 @@ class 教典字物件:
                     if row['又音類型(1.又唸作 2.俗唸作 3.合音唸作)'] == '3':
                         continue
                     主編碼 = row['主編碼'].strip()
-                    (優勢腔漢字, _優勢腔音讀) = 資料[主編碼]
-                    優勢腔整理後漢字 = 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 優勢腔漢字)
+                    漢字 = 資料[主編碼]
                     for 一音 in row['又音'].split('/'):
                         臺羅 = 一音.strip()
-                        整理後臺羅 = 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 臺羅)
                         try:
                             for 字物件 in (
                                 拆文分析器
-                                .對齊組物件(優勢腔整理後漢字, 整理後臺羅)
+                                .對齊組物件(漢字, 臺羅)
                                 .篩出字物件()
                             ):
                                 yield 字物件
                         except Exception as 錯誤:
                             print(錯誤)
 
+    #
+    # 從例句檔撈字。
+    # 因為詞目總檔不見得有包括例句的字。
+    #
     @classmethod
     def 例句(cls):
+
         with urlopen(cls.例句網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for row in DictReader(資料):
                     音讀 = row['例句標音'].strip()
                     漢字 = row['例句'].strip()
-                    整理後漢字 = 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 漢字)
-                    整理後臺羅 = 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 音讀)
                     try:
                         for 字物件 in (
                             拆文分析器
-                            .對齊句物件(整理後漢字, 整理後臺羅)
+                            .對齊句物件(漢字, 音讀)
                             .篩出字物件()
                         ):
-                            if not 字物件.音[0].isupper():
-                                yield 字物件
+                            yield 字物件
                     except Exception as 錯誤:
                         print(錯誤)
