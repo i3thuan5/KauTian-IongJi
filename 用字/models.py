@@ -17,7 +17,10 @@ class 用字表:
 
     @classmethod
     def 有這个字無(cls, 字物件):
-        return 字物件.轉音(臺灣閩南語羅馬字拼音).看分詞() in cls.全部分詞()
+        字臺羅物件 = 字物件.轉音(臺灣閩南語羅馬字拼音)
+        # 不檢查輕聲符
+        字臺羅物件.音 = 字臺羅物件.音.lstrip('0')
+        return 字臺羅物件.看分詞() in cls.全部分詞()
 
     @classmethod
     def 是標點符號無(cls, 字物件):
