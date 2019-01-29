@@ -44,3 +44,8 @@ class 提出一方音的講法單元試驗(TestCase):
     def test_漢羅兩爿括號_透中晝(self):
         self.句 = "(透)中晝　(thàu)-tiong-tàu"
         self.結果 = [["中晝", "tiong-tàu"]]
+
+    def test_偝囡仔(self):
+        self.句 = "偝囡仔　āinn-gín-á"
+        self.結果 = [["偝囡仔", "āinn-gín-á"]]
+        
