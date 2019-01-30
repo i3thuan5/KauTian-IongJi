@@ -6,8 +6,8 @@ from urllib.request import urlopen
 
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
-from 用字.詞彙方音差函式 import 提出一方音的講法
-from 用字.詞彙方音差函式 import 揣括號
+from 用字.詞彙方言差函式 import 揣括號
+from 用字.詞彙方言差函式 import 提出一方言的講法
 
 
 class 教典字物件:
@@ -16,18 +16,18 @@ class 教典字物件:
     詞目總檔屬性網址 = github + '%E8%A9%9E%E7%9B%AE%E7%B8%BD%E6%AA%94.%E8%A9%9E%E7%9B%AE%E5%B1%AC%E6%80%A7%E5%B0%8D%E7%85%A7.csv'
     又音網址 = github + '%E5%8F%88%E9%9F%B3.csv'
     例句網址 = github + '%E4%BE%8B%E5%8F%A5.csv'
-    詞彙方音差網址 = github + '%E8%A9%9E%E5%BD%99%E6%96%B9%E8%A8%80%E5%B7%AE.csv'
+    詞彙方言差網址 = github + '%E8%A9%9E%E5%BD%99%E6%96%B9%E8%A8%80%E5%B7%AE.csv'
     語音方言差網址 = github + '%E8%AA%9E%E9%9F%B3%E6%96%B9%E8%A8%80%E5%B7%AE.csv'
-    
+
     #
     # 撈出教典的字
     #
     @classmethod
     def 全部資料(cls):
-#         yield from cls.詞目總檔()
-#         yield from cls.又見音表()
-#         yield from cls.例句()
-#         yield from cls.詞彙方音差()
+        yield from cls.詞目總檔()
+        yield from cls.又見音表()
+        yield from cls.例句()
+        yield from cls.詞彙方言差()
         yield from cls.語音方言差()
 
     #
@@ -36,6 +36,7 @@ class 教典字物件:
     #
     @classmethod
     def 詞目總檔(cls):
+        print('匯入詞目總檔...')
         會使的屬性 = set()
         with urlopen(cls.詞目總檔屬性網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
@@ -60,6 +61,7 @@ class 教典字物件:
     #
     @classmethod
     def 又見音表(cls):
+        print('匯入又見音表...')
         資料 = {}
         with urlopen(cls.詞目總檔網址) as 檔:
             with io.StringIO(檔.read().decode()) as 字串資料:
@@ -85,6 +87,7 @@ class 教典字物件:
     #
     @classmethod
     def 例句(cls):
+        print('匯入例句表...')
         with urlopen(cls.例句網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for row in DictReader(資料):
@@ -93,27 +96,30 @@ class 教典字物件:
                     yield from 擲出字物件(漢字, 音讀)
 
     @classmethod
-    def 詞彙方音差(cls):
-        with urlopen(cls.詞彙方音差網址) as 檔:
+    def 詞彙方言差(cls):
+        print('匯入詞彙方言差...')
+        with urlopen(cls.詞彙方言差網址) as 檔:
             with io.StringIO(檔.read().decode()) as 表:
                 for row in DictReader(表):
                     for key, val in sorted(row.items()):
                         if key in ['序號', '方言差編碼', '詞目']:
                             continue
-                        講法陣列 = 提出一方音的講法(val)
+                        講法陣列 = 提出一方言的講法(val)
                         for 一講法 in 講法陣列:
                             yield from 擲出字物件(一講法[0], 一講法[1])
     #
     # 字的方言表
     #
+
     @classmethod
     def 語音方言差(cls):
+        print('匯入語音方言差...')
         with urlopen(cls.語音方言差網址) as 檔:
             with io.StringIO(檔.read().decode()) as 表:
                 for row in DictReader(表):
                     漢字 = 揣括號.sub('', row['字目'])
-                    for key in ['鹿港','三峽','臺北','宜蘭','臺南','高雄',
-                                '金門','馬公','新竹','臺中',]:
+                    for key in ['鹿港', '三峽', '臺北', '宜蘭', '臺南', '高雄',
+                                '金門', '馬公', '新竹', '臺中', ]:
                         # 該腔口無收著
                         if row[key] == 'x':
                             continue
@@ -122,7 +128,7 @@ class 教典字物件:
                         音陣列 = 音.split(';')
                         for 一音 in 音陣列:
                             yield from 擲出字物件(漢字, 一音)
-                            
+
 
 def 擲出字物件(句漢, 句羅):
     try:

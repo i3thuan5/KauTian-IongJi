@@ -3,7 +3,7 @@ from 臺灣言語工具.基本物件.字 import 字
 from 用字.models import 用字表
 
 
-class 用字詞彙方音差試驗(TestCase):
+class 用字詞彙方言差試驗(TestCase):
 
     #    序號,方言差編碼,詞目,鹿港,三峽,臺北,宜蘭,臺南,高雄,金門,馬公,新竹,臺中
 

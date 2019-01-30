@@ -1,11 +1,11 @@
 from django.test.testcases import TestCase
-from 用字.詞彙方音差函式 import 提出一方音的講法
+from 用字.詞彙方言差函式 import 提出一方言的講法
 
 
-class 提出一方音的講法單元試驗(TestCase):
+class 提出一方言的講法單元試驗(TestCase):
     def tearDown(self):
         self.assertEqual(
-            提出一方音的講法(self.句),
+            提出一方言的講法(self.句),
             self.結果
         )
 
