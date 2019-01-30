@@ -1,7 +1,6 @@
 from django.test.testcases import TestCase
 from 臺灣言語工具.基本物件.字 import 字
 from 用字.models import 用字表
-from 用字.匯入資料 import 教典字物件
 
 
 class 用字詞彙方音差試驗(TestCase):

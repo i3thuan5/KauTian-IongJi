@@ -119,30 +119,20 @@ class 教典字物件:
         with urlopen(cls.詞彙方音差網址) as 檔:
             with io.StringIO(檔.read().decode()) as 表:
                 for row in DictReader(表):
-                    print('詞目={}'.format(row['詞目']))
                     for key, val in sorted(row.items()):
                         if key in ['序號', '方言差編碼', '詞目']:
                             continue
                         講法陣列 = 提出一方音的講法(val)
-                        print('{}-{}'.format(key, val))
                         for 一講法 in 講法陣列:
-                            print(一講法)
-#                             擲出字物件(一講法[0], 一講法[1])
-                            for 字物件 in (
-                                    拆文分析器
-                                    .對齊句物件(一講法[0], 一講法[1])
-                                    .篩出字物件()
-                                ):
-                                    yield 字物件
-
+                            yield from 擲出字物件(一講法[0], 一講法[1])
 
 def 擲出字物件(句漢, 句羅):
-#     try:
-    for 字物件 in (
-        拆文分析器
-        .對齊句物件(句漢, 句羅)
-        .篩出字物件()
-    ):
-        yield 字物件
-#     except Exception:
-#         print('擲出字物件thut-tshê:', Exception)
+    try:
+        for 字物件 in (
+            拆文分析器
+            .對齊句物件(句漢, 句羅)
+            .篩出字物件()
+        ):
+            yield 字物件
+    except Exception as e:
+        print('擲出字物件thut-tshê:', str(e))
