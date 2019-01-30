@@ -9,7 +9,7 @@
 
 這个套件會掠著錯誤 **[字：阮 Guá]**
 
-### Usage 使用
+## Usage 使用
 ```
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 用字.models import 用字表
@@ -23,11 +23,11 @@ def 檢查對齊狀態(hanji, lomaji):
         敢有 = 用字表.有這个字無(一字物)
         ...  
 ```
-### Prerequisites 條件
+## Prerequisites 條件
 
 目前干焦支援django。
 
-### Development 開發
+## Development 開發
 
 這个模組的理路是共教典內底的字轉做[字物件](https://github.com/i3thuan5/tai5-uan5_gian5-gi2_kang1-ku7/blob/master/%E6%96%87%E4%BB%B6/%E5%9F%BA%E6%9C%AC%E7%89%A9%E4%BB%B6.md#%E4%B8%8A%E6%89%8B)，敆做一个.json檔，了後共json檔藏佇用字表內底。
 
