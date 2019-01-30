@@ -6,6 +6,7 @@ from urllib.request import urlopen
 
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+from 用字.詞彙方音差函式 import 提出一方音的講法
 
 
 class 教典字物件:
@@ -14,6 +15,7 @@ class 教典字物件:
     詞目總檔屬性網址 = github + '%E8%A9%9E%E7%9B%AE%E7%B8%BD%E6%AA%94.%E8%A9%9E%E7%9B%AE%E5%B1%AC%E6%80%A7%E5%B0%8D%E7%85%A7.csv'
     又音網址 = github + '%E5%8F%88%E9%9F%B3.csv'
     例句網址 = github + '%E4%BE%8B%E5%8F%A5.csv'
+    詞彙方音差網址 = github + '%E8%A9%9E%E5%BD%99%E6%96%B9%E8%A8%80%E5%B7%AE.csv'
 
     #
     # 撈出教典的字
@@ -23,6 +25,7 @@ class 教典字物件:
         yield from cls.詞目總檔()
         yield from cls.又見音表()
         yield from cls.例句()
+        yield from cls.詞彙方音差()
 
     #
     # 主編碼,屬性,詞目,音讀,文白屬性,部首
@@ -45,15 +48,7 @@ class 教典字物件:
                     漢字 = row['詞目'].strip()
                     for 一音 in 音讀.split('/'):
                         臺羅 = 一音.strip()
-                        try:
-                            for 字物件 in (
-                                拆文分析器
-                                .對齊組物件(漢字, 臺羅)
-                                .篩出字物件()
-                            ):
-                                yield 字物件
-                        except Exception as 錯誤:
-                            print(錯誤)
+                        yield from 擲出字物件(漢字, 臺羅)
 
     #
     # 該詞目在漳泉腔音讀以外的又見音。
@@ -79,15 +74,7 @@ class 教典字物件:
                     漢字 = 資料[主編碼]
                     for 一音 in row['又音'].split('/'):
                         臺羅 = 一音.strip()
-                        try:
-                            for 字物件 in (
-                                拆文分析器
-                                .對齊組物件(漢字, 臺羅)
-                                .篩出字物件()
-                            ):
-                                yield 字物件
-                        except Exception as 錯誤:
-                            print(錯誤)
+                        yield from 擲出字物件(漢字, 臺羅)
 
     #
     # 從例句檔撈字。
@@ -95,18 +82,33 @@ class 教典字物件:
     #
     @classmethod
     def 例句(cls):
-
         with urlopen(cls.例句網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for row in DictReader(資料):
                     音讀 = row['例句標音'].strip()
                     漢字 = row['例句'].strip()
-                    try:
-                        for 字物件 in (
-                            拆文分析器
-                            .對齊句物件(漢字, 音讀)
-                            .篩出字物件()
-                        ):
-                            yield 字物件
-                    except Exception as 錯誤:
-                        print(錯誤)
+                    yield from 擲出字物件(漢字, 音讀)
+
+    @classmethod
+    def 詞彙方音差(cls):
+        with urlopen(cls.詞彙方音差網址) as 檔:
+            with io.StringIO(檔.read().decode()) as 表:
+                for row in DictReader(表):
+                    for key, val in sorted(row.items()):
+                        if key in ['序號', '方言差編碼', '詞目']:
+                            continue
+                        講法陣列 = 提出一方音的講法(val)
+                        for 一講法 in 講法陣列:
+                            yield from 擲出字物件(一講法[0], 一講法[1])
+
+
+def 擲出字物件(句漢, 句羅):
+    try:
+        for 字物件 in (
+            拆文分析器
+            .對齊句物件(句漢, 句羅)
+            .篩出字物件()
+        ):
+            yield 字物件
+    except Exception as e:
+        print('擲出字物件:', str(e))
