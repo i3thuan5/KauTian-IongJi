@@ -18,5 +18,3 @@ class 用字詞彙方音差試驗(TestCase):
     def test_新竹_讀書_tsir_kah_tsu兩種音(self):
         #    14,[方1]0014,讀書,...,讀書　tha̍k-tsir; tha̍k-tsu
         self.assertTrue(用字表.有這个字無(字('書', 'tsir')))
-
-

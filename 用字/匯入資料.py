@@ -22,9 +22,9 @@ class 教典字物件:
     #
     @classmethod
     def 全部資料(cls):
-        #         yield from cls.詞目總檔()
-        #         yield from cls.又見音表()
-        #         yield from cls.例句()
+        yield from cls.詞目總檔()
+        yield from cls.又見音表()
+        yield from cls.例句()
         yield from cls.詞彙方音差()
 
     #
@@ -48,15 +48,7 @@ class 教典字物件:
                     漢字 = row['詞目'].strip()
                     for 一音 in 音讀.split('/'):
                         臺羅 = 一音.strip()
-                        try:
-                            for 字物件 in (
-                                拆文分析器
-                                .對齊組物件(漢字, 臺羅)
-                                .篩出字物件()
-                            ):
-                                yield 字物件
-                        except Exception as 錯誤:
-                            print(錯誤)
+                        yield from 擲出字物件(漢字, 臺羅)
 
     #
     # 該詞目在漳泉腔音讀以外的又見音。
@@ -82,15 +74,7 @@ class 教典字物件:
                     漢字 = 資料[主編碼]
                     for 一音 in row['又音'].split('/'):
                         臺羅 = 一音.strip()
-                        try:
-                            for 字物件 in (
-                                拆文分析器
-                                .對齊組物件(漢字, 臺羅)
-                                .篩出字物件()
-                            ):
-                                yield 字物件
-                        except Exception as 錯誤:
-                            print(錯誤)
+                        yield from 擲出字物件(漢字, 臺羅)
 
     #
     # 從例句檔撈字。
@@ -98,21 +82,12 @@ class 教典字物件:
     #
     @classmethod
     def 例句(cls):
-
         with urlopen(cls.例句網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for row in DictReader(資料):
                     音讀 = row['例句標音'].strip()
                     漢字 = row['例句'].strip()
-                    try:
-                        for 字物件 in (
-                            拆文分析器
-                            .對齊句物件(漢字, 音讀)
-                            .篩出字物件()
-                        ):
-                            yield 字物件
-                    except Exception as 錯誤:
-                        print(錯誤)
+                    yield from 擲出字物件(漢字, 音讀)
 
     @classmethod
     def 詞彙方音差(cls):
@@ -126,6 +101,7 @@ class 教典字物件:
                         for 一講法 in 講法陣列:
                             yield from 擲出字物件(一講法[0], 一講法[1])
 
+
 def 擲出字物件(句漢, 句羅):
     try:
         for 字物件 in (
@@ -135,4 +111,4 @@ def 擲出字物件(句漢, 句羅):
         ):
             yield 字物件
     except Exception as e:
-        print('擲出字物件thut-tshê:', str(e))
+        print('擲出字物件:', str(e))
