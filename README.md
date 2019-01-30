@@ -23,7 +23,7 @@ def 檢查對齊狀態(hanji, lomaji):
         敢有 = 用字表.有這个字無(一字物)
         ...  
 ```
-### Prerequisite 條件
+### Prerequisites 條件
 
 目前干焦支援django。
 
