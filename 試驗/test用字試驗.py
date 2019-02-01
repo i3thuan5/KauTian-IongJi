@@ -32,6 +32,12 @@ class 用字試驗(TestCase):
     def test_附錄地名提掉(self):
         self.assertFalse(用字表.有這个字無(字('醫', 'penn7')))
 
+    def test_附錄地名基隆_基提掉(self):
+        self.assertFalse(用字表.有這个字無(字('基', 'ke1')))
+    
+    def test_附錄地名基隆_隆提掉(self):
+        self.assertFalse(用字表.有這个字無(字('隆', 'lang5')))
+        
     def test_大寫(self):
         self.assertTrue(用字表.有這个字無(字('啊', 'Ah')))
 
