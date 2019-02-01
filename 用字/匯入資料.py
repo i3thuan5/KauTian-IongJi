@@ -26,7 +26,6 @@ class 教典字物件:
     def 全部資料(cls):
         yield from cls.詞目總檔()
         yield from cls.又見音表()
-        yield from cls.例句()
         yield from cls.詞彙方言差()
         yield from cls.語音方言差()
 
@@ -84,6 +83,7 @@ class 教典字物件:
     #
     # 從例句檔撈字。
     # 因為詞目總檔不見得有包括例句的字。
+    # （停用）
     #
     @classmethod
     def 例句(cls):
