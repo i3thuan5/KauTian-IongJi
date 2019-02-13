@@ -1,6 +1,7 @@
 from django.test.testcases import TestCase
 from 臺灣言語工具.基本物件.字 import 字
 from 用字.models import 用字表
+from unittest.case import skip
 
 
 class 用字試驗(TestCase):
@@ -32,6 +33,7 @@ class 用字試驗(TestCase):
     def test_附錄地名提掉(self):
         self.assertFalse(用字表.有這个字無(字('醫', 'penn7')))
 
+    @skip('因為教典的詞目總檔有收基|ke')
     def test_附錄地名基隆_基提掉(self):
         self.assertFalse(用字表.有這个字無(字('基', 'ke1')))
     
