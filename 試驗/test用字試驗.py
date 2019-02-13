@@ -36,10 +36,10 @@ class 用字試驗(TestCase):
     @skip('因為教典的詞目總檔有收基|ke')
     def test_附錄地名基隆_基提掉(self):
         self.assertFalse(用字表.有這个字無(字('基', 'ke1')))
-    
+
     def test_附錄地名基隆_隆提掉(self):
         self.assertFalse(用字表.有這个字無(字('隆', 'lang5')))
-        
+
     def test_大寫(self):
         self.assertTrue(用字表.有這个字無(字('啊', 'Ah')))
 
@@ -48,3 +48,6 @@ class 用字試驗(TestCase):
 
     def test_傳統調符(self):
         self.assertTrue(用字表.有這个字無(字('成', 'sîng')))
+
+    def test_那卡西ながし(self):
+        self.assertFalse(用字表.有這个字無(字('那', 'な')))
