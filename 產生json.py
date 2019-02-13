@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from 用字.匯入資料 import 教典字物件
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 import json
 from 用字.公家 import 用字檔名
 
@@ -9,7 +8,7 @@ def 產生json():
     全部用字 = set()
     for 字物件 in 教典字物件.全部資料():
         全部用字.add(
-            字物件.轉音(臺灣閩南語羅馬字拼音).看分詞()
+            字物件.看分詞()
         )
     with open(用字檔名, 'w') as 檔案:
         json.dump(

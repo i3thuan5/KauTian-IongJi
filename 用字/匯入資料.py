@@ -6,8 +6,10 @@ from urllib.request import urlopen
 
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 用字.詞彙方言差函式 import 揣括號
 from 用字.詞彙方言差函式 import 提出一方言的講法
+from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 
 
 class 教典字物件:
@@ -137,6 +139,6 @@ def 擲出字物件(句漢, 句羅):
             .對齊句物件(句漢, 句羅)
             .篩出字物件()
         ):
-            yield 字物件
-    except Exception as e:
+            yield 字物件.轉音(臺灣閩南語羅馬字拼音)
+    except 解析錯誤 as e:
         print('擲出字物件:', str(e))
