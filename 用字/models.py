@@ -21,9 +21,3 @@ class 用字表:
         # 不檢查輕聲符
         字臺羅物件.音 = 字臺羅物件.音.lstrip('0')
         return 字臺羅物件.看分詞() in cls.全部分詞()
-
-    @classmethod
-    def 是標點符號無(cls, 字物件):
-        if 字物件.型 in 標點符號 and 字物件.音 in 標點符號:
-            return True
-        return False
