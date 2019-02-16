@@ -1,23 +1,22 @@
-import json
-
-from 臺灣言語工具.基本物件.公用變數 import 標點符號
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
-from 用字.公家 import 教典檔名
+from django.db import models
+from 臺灣言語工具.基本物件.字 import 字
 
 
-with open(教典檔名) as 檔案:
-    _全部分詞 = set(json.load(檔案))
-
-
-class 用字表:
-
-    @classmethod
-    def 全部分詞(cls):
-        return _全部分詞
-
+class 用字表(models.Model):
+    漢字 = models.CharField(max_length=5)
+    羅馬字 = models.CharField(max_length=15)
+    分詞 = models.CharField(max_length=20)
+    
     @classmethod
     def 有這个字無(cls, 字物件):
-        字臺羅物件 = 字物件.轉音(臺灣閩南語羅馬字拼音)
-        # 不檢查輕聲符
-        字臺羅物件.音 = 字臺羅物件.音.lstrip('0')
-        return 字臺羅物件.看分詞() in cls.全部分詞()
+        字分詞 = 字物件.轉音(臺灣閩南語羅馬字拼音).看分詞()
+        return cls.objects.filter(分詞=字分詞).exists()
+        
+    def save(self, *args, **kwargs):
+        self.分詞 = (
+            字(self.漢字, self.羅馬字)
+            .轉音(臺灣閩南語羅馬字拼音)
+            .看分詞()
+        )
+        super(用字表, self).save(*args, **kwargs)
