@@ -2,11 +2,11 @@ import json
 
 
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
-from 用字.公家 import 教典檔名
 from 臺灣言語工具.基本物件.字 import 字
 from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
+from 用字.公家變數 import 教典檔名
 
-
+ 
 with open(教典檔名) as 檔案:
     _全部分詞 = set(json.load(檔案))
 
