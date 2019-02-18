@@ -1,7 +1,6 @@
 import json
 
 
-from 臺灣言語工具.基本物件.公用變數 import 標點符號
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 用字.公家 import 教典檔名
 from 臺灣言語工具.基本物件.字 import 字
