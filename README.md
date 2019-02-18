@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 ```
 
 2. 去後台加字
+
 ```
 python manage.py runserver
 ```
