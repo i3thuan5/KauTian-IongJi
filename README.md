@@ -2,30 +2,67 @@
 [![Build Status](https://travis-ci.org/i3thuan5/kau3-tian2_iong7-ji7.svg?branch=master)](https://travis-ci.org/i3thuan5/kau3-tian2_iong7-ji7)
 [![Coverage Status](https://coveralls.io/repos/github/i3thuan5/kau3-tian2_iong7-ji7/badge.svg?branch=master)](https://coveralls.io/github/i3thuan5/kau3-tian2_iong7-ji7?branch=master)
 
-這个套件鬥檢查django做底的資料庫，逐句的漢字佮羅馬字敢有合教典用字。
+這个套件包含教典的字佮標點符號，幫你鬥掠出無合教典的字！
 
 比論講，資料庫有一句：
 * 阮是教典用字。 **Guá** sī kàu-tián iōng-jī. 
 
-這个套件會掠著錯誤 **[字：阮 Guá]**
+這个套件掠會著錯誤 **[字：阮 Guá]**
+
+## Installation 安裝
+
+```
+pip install kau3-tian2-iong7-ji7
+```
+
+## Dependencies 需要的套件
+
+* 臺灣言語工具
+
 
 ## Usage 使用
 ```
-from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+from 臺灣言語工具.基本物件.字 import 字
+from 用字 import 教典
+教典.有這个字無(字('來', 'lâi'))
+```
+
+```
+from 臺灣言語工具.基本物件.字 import 字
+from 用字 import 標點
+標點.有這个字無(字("「", '"'))
+```
+
+## Usage of Django model 佇Django使用
+
+本套件目前支援django，有先寫便一个 `用字表` 予使用者加字。
+
+1. 到 settings.py，佇 INSTALLED_APPS 加上 `用字`。
+
+```
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    ...
++   '用字',
+]
+```
+
+2. 去後台加字
+
+```
+python manage.py runserver
+```
+
+3. 完成！會當用本套件矣。
+
+```
+from 臺灣言語工具.基本物件.字 import 字
 from 用字.models import 用字表
 
-
-def 檢查對齊狀態(hanji, lomaji):
-    句物件 = 拆文分析器.對齊句物件(hanji, lomaji)
-    毋著的字 = []
-    字物陣列 = 句物件.篩出字物件()
-    for 一字物 in 字物陣列:
-        敢有 = 用字表.有這个字無(一字物)
-        ...  
+用字表.有這个字無(字('來', 'lâi'))
 ```
-## Prerequisites 條件
-
-目前干焦支援django。
 
 ## Development 開發
 
