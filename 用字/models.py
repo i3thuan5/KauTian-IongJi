@@ -10,6 +10,9 @@ class 用字表(models.Model):
     
     @classmethod
     def 有這个字無(cls, 字物件):
+        print('有這个字無start')
+        for item in cls.objects.all():
+            print(item)
         字分詞 = 字物件.轉音(臺灣閩南語羅馬字拼音).看分詞()
         return cls.objects.filter(分詞=字分詞).exists()
         
