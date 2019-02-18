@@ -17,7 +17,7 @@ branches:
   - master
   - /\d+\.\d+\.\d+/
 script:
-- python 產生json.py
+- python 產生教典json.py
 - tox -e $TOX_ENV
 after_success:
 - coverage report
