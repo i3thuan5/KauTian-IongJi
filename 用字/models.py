@@ -1,6 +1,7 @@
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from django.db import models
 from 臺灣言語工具.基本物件.字 import 字
+from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 
 class 用字表(models.Model):
@@ -18,8 +19,9 @@ class 用字表(models.Model):
         
     def save(self, *args, **kwargs):
         self.分詞 = (
-            字(self.漢字, self.羅馬字)
+            拆文分析器.對齊字物件(self.漢字, self.羅馬字)
             .轉音(臺灣閩南語羅馬字拼音)
             .看分詞()
         )
+        print(self.分詞)
         super(用字表, self).save(*args, **kwargs)
