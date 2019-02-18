@@ -2,6 +2,8 @@ from django.contrib import admin
 from 用字.models import 用字表
 
 # 佇admin的名顯示"用字表"
+
+
 class 用字管理表(用字表):
     class Meta:
         proxy = True
