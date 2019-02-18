@@ -2,7 +2,6 @@ from django.test import TestCase
 from 臺灣言語工具.基本物件.字 import 字
 from 用字.models import 用字表
 from django.test.utils import override_settings
-from django.conf import settings
 
 
 class 設定試驗(TestCase):
