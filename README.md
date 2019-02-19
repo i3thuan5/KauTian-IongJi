@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/i3thuan5/kau3-tian2_iong7-ji7.svg?branch=master)](https://travis-ci.org/i3thuan5/kau3-tian2_iong7-ji7)
 [![Coverage Status](https://coveralls.io/repos/github/i3thuan5/kau3-tian2_iong7-ji7/badge.svg?branch=master)](https://coveralls.io/github/i3thuan5/kau3-tian2_iong7-ji7?branch=master)
 
-這个套件包含教典的字佮標點符號，幫你鬥掠出無合教典的字！
+這个套件包含[教典的字](https://github.com/g0v/moedict-data-twblg/tree/master/uni)佮[標點符號](https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/c2.htm)，幫你鬥掠出無合教典的字！
 
 比論講，資料庫有一句：
 * 阮是教典用字。 **Guá** sī kàu-tián iōng-jī. 
