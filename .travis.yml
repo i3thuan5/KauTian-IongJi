@@ -6,7 +6,8 @@ python:
 - '3.5'
 env:
 - TOX_ENV=flake8
-- TOX_ENV=test
+- TOX_ENV=pythonTest
+- TOX_ENV=djangoTest
 - TOX_ENV=build
 - TOX_ENV=checkmigration
 install:
