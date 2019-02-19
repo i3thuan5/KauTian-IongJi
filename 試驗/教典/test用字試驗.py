@@ -1,7 +1,6 @@
-from django.test.testcases import TestCase
 from 臺灣言語工具.基本物件.字 import 字
 from 用字 import 教典
-from unittest.case import skip
+from unittest.case import skip, TestCase
 
 
 class 用字試驗(TestCase):

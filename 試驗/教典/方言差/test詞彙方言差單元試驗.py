@@ -1,5 +1,5 @@
-from django.test.testcases import TestCase
 from 教典.詞彙方言差函式 import 提出一方言的講法
+from unittest.case import TestCase
 
 
 class 提出一方言的講法單元試驗(TestCase):
