@@ -43,7 +43,7 @@ setup(
     ],
     package_data={
         '用字': [
-            '用字.json',
+            '教典.json',
         ],
     }
 )
