@@ -49,10 +49,10 @@ INSTALLED_APPS = [
 ]
 ```
 
-2. 去後台加字
+2. Migrate
 
 ```
-python manage.py runserver
+python manage.py migrate
 ```
 
 3. 完成！會當用本套件矣。
@@ -62,6 +62,12 @@ from 臺灣言語工具.基本物件.字 import 字
 from 用字.models import 用字表
 
 用字表.有這个字無(字('來', 'lâi'))
+```
+
+Option. 去後台加字
+
+```
+python manage.py runserver
 ```
 
 ## Development 開發
