@@ -1,9 +1,8 @@
 sudo: false
-dist: trusty
+dist: xenial
 language: python
 python:
-- '3.4'
-- '3.5'
+- '3.7'
 env:
 - TOX_ENV=flake8
 - TOX_ENV=testPython
