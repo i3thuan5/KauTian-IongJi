@@ -27,6 +27,8 @@ class 甘字典字物件:
                         continue
                     elif pit['chinese'] == '—':
                         continue
+                    elif pit['chinese'] == '─':
+                        continue
                     elif pit['chinese'].startswith('('):
                         continue
                     try:
