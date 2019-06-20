@@ -1,6 +1,6 @@
 from 臺灣言語工具.基本物件.字 import 字
 from unittest.case import TestCase
-from 用字.甘字典規範 import 甘字典
+from 用字 import 甘字典
 
 
 class 用字試驗(TestCase):
