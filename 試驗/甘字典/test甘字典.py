@@ -1,5 +1,5 @@
 from 臺灣言語工具.基本物件.字 import 字
-from unittest.case import skip, TestCase
+from unittest.case import TestCase
 from 用字.甘字典規範 import 甘字典
 
 
