@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from _ast import Try
 from csv import DictReader
 import io
 from urllib.request import urlopen
