@@ -32,7 +32,8 @@ class 甘字典字物件:
                     elif pit['chinese'].startswith('('):
                         continue
                     try:
-                        字物件 = 拆文分析器.建立字物件(pit['chinese'], pit['word'])
-                        yield 字物件.轉音(臺灣閩南語羅馬字拼音)
+                        句物件 = 拆文分析器.建立句物件(pit['chinese'], pit['word'])
+                        for 字物件 in 句物件.篩出字物件():
+                            yield 字物件.轉音(臺灣閩南語羅馬字拼音)
                     except 臺灣言語工具.解析整理.解析錯誤.解析錯誤 as 錯誤:
-                        print(錯誤)
+                        print(錯誤, pit['example'])

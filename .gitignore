@@ -104,4 +104,4 @@ ENV/
 /.settings
 /MANIFEST
 db.sqlite3
-用字/教典.json
+用字/*.json
