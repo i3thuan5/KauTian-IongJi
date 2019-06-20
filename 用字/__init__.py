@@ -7,7 +7,7 @@ from 用字.標點規範 import 提全部標點
 
 class 字典:
     def __init__(self, 分詞):
-        self._全部分詞 = 分詞
+        self._全部分詞 = set(分詞)
 
     def 全部分詞(self):
         return self._全部分詞
@@ -20,9 +20,9 @@ class 字典:
 
 
 with open(教典檔名) as 檔案:
-    教典 = 字典(set(json.load(檔案)))
+    教典 = 字典(json.load(檔案))
 標點 = 字典(提全部標點())
 with open(甘字典檔名) as 檔案:
-    甘字典 = 字典(set(json.load(檔案)))
+    甘字典 = 字典(json.load(檔案))
 
 __all__ = ['教典', '標點', '甘字典']
