@@ -4,11 +4,10 @@ from csv import DictReader
 import io
 from urllib.request import urlopen
 
-import 臺灣言語工具
-
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
+from 臺灣言語工具.羅馬字 import 新白話字
+from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 
 
 class 甘字典字物件:
@@ -33,6 +32,6 @@ class 甘字典字物件:
                     try:
                         句物件 = 拆文分析器.建立句物件(pit['chinese'], pit['word'])
                         for 字物件 in 句物件.篩出字物件():
-                            yield 字物件.轉音(臺灣閩南語羅馬字拼音)
-                    except 臺灣言語工具.解析整理.解析錯誤.解析錯誤 as 錯誤:
+                            yield 字物件.轉音(新白話字)
+                    except 解析錯誤 as 錯誤:
                         print(錯誤, pit['example'])

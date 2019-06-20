@@ -1,8 +1,8 @@
 from 用字.公家變數 import 甘字典檔名
 import json
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 用字.公家變數 import 教典檔名
 from 用字.標點規範 import 提全部標點
+from 臺灣言語工具.羅馬字 import 新白話字
 
 
 class 字典:
@@ -13,7 +13,7 @@ class 字典:
         return self._全部分詞
 
     def 有這个字無(self, 字物件):
-        字臺羅物件 = 字物件.轉音(臺灣閩南語羅馬字拼音)
+        字臺羅物件 = 字物件.轉音(新白話字)
         # 不檢查輕聲符
         字臺羅物件.音 = 字臺羅物件.音.lstrip('0')
         return 字臺羅物件.看分詞() in self.全部分詞()
