@@ -4,7 +4,7 @@ from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from django.conf import settings
 from 用字 import 標點
 from 用字 import 教典
-from 用字.甘字典規範 import 甘字典
+from 用字 import 甘字典
 
 
 class 用字表(models.Model):
