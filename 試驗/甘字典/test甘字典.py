@@ -8,8 +8,11 @@ class 用字試驗(TestCase):
     def test_有文音字(self):
         self.assertTrue(甘字典.有這个字無(字('靄', 'Ai2')))
 
-    def test_白話字(self):
+    def test_原稿白話字(self):
         self.assertTrue(甘字典.有這个字無(字('嚵', 'Chham5')))
+
+    def test_使用者白話字(self):
+        self.assertTrue(甘字典.有這个字無(字('嚵', 'chham5')))
 
     def test_莫有點(self):
         self.assertFalse(甘字典.有這个字無(字('●', 'A3')))
