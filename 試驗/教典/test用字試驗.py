@@ -8,7 +8,10 @@ class 用字試驗(TestCase):
     def test_字物件(self):
         self.assertTrue(教典.有這个字無(字('來', 'lai5')))
 
-    def test_輕聲有(self):
+    def test_輕聲符(self):
+        self.assertTrue(教典.有這个字無(字('來', 'lai5', 輕聲標記=True)))
+
+    def test_舊輕聲(self):
         self.assertTrue(教典.有這个字無(字('來', '0lai5')))
 
     def test_無輕聲(self):
