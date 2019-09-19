@@ -28,6 +28,7 @@ class 用字表(models.Model):
     def 有這个字無(cls, 字物件):
         字臺羅物件 = 字物件.轉音(臺灣閩南語羅馬字拼音)
         字臺羅物件.音 = 字臺羅物件.音.lstrip('0')
+        字臺羅物件.輕聲標記 = False
         字分詞 = 字臺羅物件.看分詞()
         if 字分詞 in cls._用字ê範圍:
             return True
@@ -36,9 +37,10 @@ class 用字表(models.Model):
     def save(self, *args, **kwargs):
         # 提掉舊的輕聲規範
         羅馬字 = self.羅馬字.lstrip('0')
-        self.分詞 = (
+        字臺羅物件 = (
             拆文分析器.對齊字物件(self.漢字, 羅馬字)
             .轉音(臺灣閩南語羅馬字拼音)
-            .看分詞()
         )
+        字臺羅物件.輕聲標記 = False
+        self.分詞 = 字臺羅物件.看分詞()
         super(用字表, self).save(*args, **kwargs)
