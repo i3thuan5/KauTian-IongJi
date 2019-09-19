@@ -19,32 +19,32 @@ class 設定試驗(TestCase):
     def test_預設關掉(self):
         self.assertFalse(用字表.有這个字無(字('靄', 'Ai2')))
 
-    @override_settings(敢開教典=True)
+    @override_settings(IONGJI_KAUTIAN=True)
     def test_共教典開開(self):
         self.重讀用字設定()
         self.assertTrue(用字表.有這个字無(字('媠', 'suí')))
 
-    @override_settings(敢開教典=False)
+    @override_settings(IONGJI_KAUTIAN=False)
     def test_共教典關掉(self):
         self.重讀用字設定()
         self.assertFalse(用字表.有這个字無(字('媠', 'suí')))
 
-    @override_settings(敢開標點=True)
+    @override_settings(IONGJI_PHIAUTIAM=True)
     def test_共標點開開(self):
         self.重讀用字設定()
         self.assertTrue(用字表.有這个字無(字('！', '!')))
 
-    @override_settings(敢開標點=False)
+    @override_settings(IONGJI_PHIAUTIAM=False)
     def test_共標點關掉(self):
         self.重讀用字設定()
         self.assertFalse(用字表.有這个字無(字('！', '!')))
 
-    @override_settings(敢開甘字典=True)
+    @override_settings(IONGJI_KAMJITIAN=True)
     def test_共甘字典開開(self):
         self.重讀用字設定()
         self.assertTrue(用字表.有這个字無(字('靄', 'Ai2')))
 
-    @override_settings(敢開甘字典=False)
+    @override_settings(IONGJI_KAMJITIAN=False)
     def test_共甘字典關掉(self):
         self.重讀用字設定()
         self.assertFalse(用字表.有這个字無(字('靄', 'Ai2')))
