@@ -9,11 +9,11 @@ from 用字 import 甘字典
 
 def _theh用字ê範圍():
     範圍 = set()
-    if getattr(settings, '敢開教典', True):
+    if getattr(settings, 'IONGJI_KAUTIAN', True):
         範圍 |= 教典.全部分詞()
-    if getattr(settings, '敢開標點', True):
+    if getattr(settings, 'IONGJI_PHIAUTIAM', True):
         範圍 |= 標點.全部分詞()
-    if getattr(settings, '敢開甘字典', False):
+    if getattr(settings, 'IONGJI_KAMJITIAN', False):
         範圍 |= 甘字典.全部分詞()
     return 範圍
 

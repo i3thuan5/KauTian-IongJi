@@ -37,7 +37,7 @@ from 用字 import 標點
 
 本套件目前支援django，有先寫便一个 `用字表` 予使用者加字。
 
-1. 到 settings.py，佇 INSTALLED_APPS 加上 `用字`。
+1. 到 `settings.py`，佇 `INSTALLED_APPS` 加上 `用字`。
 
 ```
 # Application definition
@@ -64,11 +64,33 @@ from 用字.models import 用字表
 用字表.有這个字無(字('來', 'lâi'))
 ```
 
-Option. 去後台加字
+4. Option: `settings.py` 決定預設用字範圍，範例
+```
+IONGJI_KAUTIAN = True
+IONGJI_PHIAUTIAM = True
+IONGJI_KAMJITIAN = False
+```
+5. Option. 去後台加字
 
 ```
 python manage.py runserver
 ```
+
+## 參數
+### IONGJI_KAUTIAN
+預設：`True`
+
+[教育部辭典](https://twblg.dict.edu.tw/holodict_new/)詞條、又音 kah 腔口差 ê 用字。
+
+### IONGJI_PHIAUTIAM
+預設：`True`
+
+[教育部標點符號](https://language.moe.gov.tw/001/Upload/FILES/SITE_CONTENT/M0001/HAU/c2.htm) ê 設定。
+
+### IONGJI_KAMJITIAN
+預設：`False`
+
+[甘字典](http://taigi.fhl.net/dick/) ê 文音。
 
 ## Development 開發
 
