@@ -5,6 +5,7 @@ from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 用字 import 標點
 from 用字 import 教典
 from 用字 import 甘字典
+from 用字 import 字典
 
 
 def _theh用字ê範圍():
@@ -44,3 +45,11 @@ class 用字表(models.Model):
         字臺羅物件.輕聲標記 = False
         self.分詞 = 字臺羅物件.看分詞()
         super(用字表, self).save(*args, **kwargs)
+
+    @classmethod
+    def 這馬(cls):
+        return 字典(cls.全部分詞())
+
+    @classmethod
+    def 全部分詞(cls):
+        return cls._用字ê範圍 | set(cls.objects.values_list('分詞', flat=True))
