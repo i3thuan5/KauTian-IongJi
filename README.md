@@ -99,7 +99,7 @@ python manage.py runserver
 開發這个套件的試驗主要是咧檢查用字表的程式。所擺你若有改程式，請先重算一擺才閣走試驗。
 
 ```
-python 產生json.py
+python senn_json.py
 python manage.py test
 ```
 

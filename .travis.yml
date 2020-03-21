@@ -1,5 +1,5 @@
 sudo: false
-dist: xenial
+dist: bionic
 language: python
 python:
 - '3.7'
@@ -17,7 +17,7 @@ branches:
   - master
   - /\d+\.\d+\.\d+/
 script:
-- python 產生json.py
+- python senn_json.py
 - tox -e $TOX_ENV
 after_success:
 - coverage report
