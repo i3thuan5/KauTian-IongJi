@@ -1,5 +1,4 @@
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
-from django.conf import settings
 from django.db import models
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 用字 import 字典
