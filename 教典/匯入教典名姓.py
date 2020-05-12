@@ -42,7 +42,9 @@ class 教典名姓字物件:
                         continue
                     for lo in row[1:]:
                         if lo.rstrip() == '':
-                            yield from 擲出字物件(row[0], lo.split('(')[0])
+                            continue
+                        yield from 擲出字物件(row[0], lo.split('(')[0])
+
     @classmethod
     def senn(cls):
         print('匯入senn...')
