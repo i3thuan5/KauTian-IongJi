@@ -1,4 +1,5 @@
-from django.test.testcases import TestCase
+from unittest.case import TestCase
+from 臺灣言語工具.基本物件.字 import 字
 
 
 class Mia(TestCase):
