@@ -24,13 +24,11 @@ class 教典名姓字物件:
         'id=1yNKBf8NcYj00iH6zVETMB9LwNZf0HCg0fekp8zlNrRY&gid=1612622647'
     )
 
-    #
-    # 撈出教典的字
-    #
     @classmethod
     def 全部資料(cls):
         yield from cls.mia()
-#         yield from cls.senn()
+        '出現罕用字，顛倒困擾'
+        # yield from cls.senn()
 
     @classmethod
     def mia(cls):
@@ -63,11 +61,20 @@ class 教典名姓字物件:
     @classmethod
     def senn(cls):
         print('匯入senn...')
-        with urlopen(cls.mia) as 檔:
+        with urlopen(cls.senn_bangtsi) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for kui, row in enumerate(csv.reader(資料)):
                     if kui == 0:
                         continue
-                    for lo in row[1:]:
+                    han = row[2].rstrip()
+                    if len(han) >= 1:
+                        pass
+                    else:
+                        ma = row[1].strip()
+                        if len(ma) == 0:
+                            print('姓漢字bô字元：{} {}'.format(kui + 1, row))
+                            continue
+                        han = chr(int(row[1], 16))
+                    for lo in row[3:]:
                         if lo.rstrip() != '':
-                            yield from 擲出字物件(row[0], lo.split('(')[0])
+                            yield from 擲出字物件(han, lo)
