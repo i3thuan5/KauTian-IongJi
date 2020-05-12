@@ -12,7 +12,9 @@ class Mia(TestCase):
         self.assertTrue(教典名姓.有這个字無(字('薔', 'tshiônn')))
 
     def test_訓用mài(self):
-        self.fail()
+        '教典本文收才準算'
+        self.assertFalse(教典名姓.有這个字無(字('呆', 'phái')))
 
     def test_俗用mài(self):
-        self.fail()
+        '教典本文收才準算'
+        self.assertFalse(教典名姓.有這个字無(字('殯', 'pin')))

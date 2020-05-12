@@ -35,15 +35,30 @@ class 教典名姓字物件:
     @classmethod
     def mia(cls):
         print('匯入mia...')
+
+        eingtit = ['又', '官', '文', '泉', '甘', '白', '不標', ]
+        beingtit = ['訓', '俗', ]
+
         with urlopen(cls.mia_bangtsi) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for kui, row in enumerate(csv.reader(資料)):
                     if kui == 0:
                         continue
-                    for lo in row[1:]:
-                        if lo.rstrip() == '':
+                    for pit in row[1:]:
+                        if pit.rstrip() == '':
                             continue
-                        yield from 擲出字物件(row[0], lo.split('(')[0])
+                        lo, *au = pit.split('(')
+                        if len(au) == 0:
+                            pass
+                        elif len(au) == 1:
+                            hing = au[0].rstrip(')')
+                            if hing in eingtit:
+                                pass
+                            elif hing in beingtit:
+                                continue
+                            else:
+                                lo = pit
+                        yield from 擲出字物件(row[0], lo)
 
     @classmethod
     def senn(cls):
