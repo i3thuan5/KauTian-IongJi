@@ -23,14 +23,8 @@ pip install kau3-tian2-iong7-ji7
 ## Usage 使用
 ```
 from 臺灣言語工具.基本物件.字 import 字
-from 用字 import 教典
-教典.有這个字無(字('來', 'lâi'))
-```
-
-```
-from 臺灣言語工具.基本物件.字 import 字
-from 用字 import 標點
-標點.有這个字無(字("「", '"'))
+from 用字 import 建議
+建議.有這个字無(字('來', 'lâi'))
 ```
 
 ## Usage of Django model 佇Django使用
@@ -82,21 +76,27 @@ IONGJI_KAMJITIAN = False
 python manage.py runserver
 ```
 
-## 參數
-### IONGJI_KAUTIAN
-預設：`True`
+## 分開判斷
+### [教育部辭典](https://twblg.dict.edu.tw/holodict_new/)詞條、又音 kah 腔口差 ê 用字。
+```
+from 臺灣言語工具.基本物件.字 import 字
+from 用字 import 教典
+教典.有這个字無(字('來', 'lâi'))
+```
 
-[教育部辭典](https://twblg.dict.edu.tw/holodict_new/)詞條、又音 kah 腔口差 ê 用字。
+### [教育部標點符號](https://language.moe.gov.tw/001/Upload/FILES/SITE_CONTENT/M0001/HAU/c2.htm) ê 設定。
+```
+from 臺灣言語工具.基本物件.字 import 字
+from 用字 import 標點
+標點.有這个字無(字("「", '"'))
+```
 
-### IONGJI_PHIAUTIAM
-預設：`True`
-
-[教育部標點符號](https://language.moe.gov.tw/001/Upload/FILES/SITE_CONTENT/M0001/HAU/c2.htm) ê 設定。
-
-### IONGJI_KAMJITIAN
-預設：`False`
-
-[甘字典](http://taigi.fhl.net/dick/) ê 文音。
+### [甘字典](http://taigi.fhl.net/dick/) ê 文音。
+```
+from 臺灣言語工具.基本物件.字 import 字
+from 用字 import 甘字典
+甘字典.有這个字無(字("「", '"'))
+```
 
 ## Development 開發
 
