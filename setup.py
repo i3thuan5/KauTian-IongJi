@@ -44,6 +44,7 @@ setup(
     package_data={
         '用字': [
             '教典.json',
+            '教典名姓.json',
             '甘字典.json',
         ],
     }
