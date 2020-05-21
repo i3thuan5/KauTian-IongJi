@@ -43,6 +43,8 @@ class 教典名姓字物件:
                     if kui == 0:
                         continue
                     for pit in row[1:]:
+                        if row[0] in ['兔', '𠕆', ]:
+                            continue
                         if pit.rstrip() == '':
                             continue
                         lo, *au = pit.split('(')
