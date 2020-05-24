@@ -4,10 +4,13 @@
 
 這个套件包含[教典的字](https://github.com/g0v/moedict-data-twblg/tree/master/uni)佮[標點符號](https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/c2.htm)，幫你鬥掠出無合教典的字！
 
-比論講，資料庫有一句：
-* 阮是教典用字。 **Guá** sī kàu-tián iōng-jī. 
+```py3
+from 臺灣言語工具.基本物件.字 import 字
+from 用字 import 建議
 
-這个套件掠會著錯誤 **[字：阮 Guá]**
+建議.有這个字無(字('來', 'lâi'))
+#True
+```
 
 ## Installation 安裝
 
