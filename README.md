@@ -9,7 +9,10 @@ from 臺灣言語工具.基本物件.字 import 字
 from 用字 import 建議
 
 建議.有這个字無(字('來', 'lâi'))
-#True
+# True
+
+建議.有這个字無(字('囡', 'kiánn'))
+# False
 ```
 
 ## Installation 安裝
