@@ -21,10 +21,6 @@ from 用字 import 建議
 pip install kau3-tian2-iong7-ji7
 ```
 
-## Dependencies 需要的套件
-
-* 臺灣言語工具
-
 ## Usage 使用
 Tio̍h 和臺灣言語工具同齊用！
 ```py3
@@ -44,8 +40,8 @@ for ji in 拆文分析器.對齊句物件('你來', 'Lí lâi').篩出字物件(
 #True
 #True
 ```
-## Usage of Django model 佇Django使用
 
+## Usage of Django model 佇Django使用
 本套件目前支援django，有先寫便一个 `用字表` 予使用者加字。
 
 1. 到 `settings.py`，佇 `INSTALLED_APPS` 加上 `用字`。
@@ -65,20 +61,19 @@ python manage.py migrate
 3. 完成！會當用本套件矣。
 
 
-### 大量查一kái資料庫ê做法
+### Optional: 加速 Django 大量查資料庫
 ```py3
 表 = 用字表.這馬()
 表.有這个字無(字('來', 'lâi'))
 #True
 ```
-
-4. Option: `settings.py` 決定預設用字範圍，範例
+4. `settings.py` 決定預設用字範圍，範例
 ```py3
 IONGJI_KAUTIAN = True
 IONGJI_PHIAUTIAM = True
 IONGJI_KAMJITIAN = False
 ```
-5. Option. 去後台加字
+5. 去後台加字，然後重開 Django
 ```bash
 python manage.py runserver
 ```
@@ -116,4 +111,7 @@ python senn_json.py
 python manage.py test
 ```
 
+#### Dependencies 需要的套件
+
+* 臺灣言語工具
 
