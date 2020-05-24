@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/i3thuan5/kau3-tian2_iong7-ji7.svg?branch=master)](https://travis-ci.org/i3thuan5/kau3-tian2_iong7-ji7)
 [![Coverage Status](https://coveralls.io/repos/github/i3thuan5/kau3-tian2_iong7-ji7/badge.svg?branch=master)](https://coveralls.io/github/i3thuan5/kau3-tian2_iong7-ji7?branch=master)
 
-這个套件包含[教典的字](https://github.com/g0v/moedict-data-twblg/tree/master/uni)佮[標點符號](https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/c2.htm)，幫你鬥掠出無合教典的字！
+這个套件包含[教典的字](https://github.com/g0v/moedict-data-twblg/tree/master/uni)佮[標點符號](https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/c2.htm)，共你掠出無合教典的字！
 
 ```py3
 from 臺灣言語工具.基本物件.字 import 字
