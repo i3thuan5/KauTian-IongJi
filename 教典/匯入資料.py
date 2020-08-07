@@ -44,6 +44,8 @@ class 教典字物件:
                 for row in DictReader(資料):
                     if '地名' not in row['屬性'].strip():
                         會使的屬性.add(row['編號'].strip())
+                    elif '舊地名' in row['屬性'].strip():
+                        會使的屬性.add(row['編號'].strip())
         with urlopen(cls.詞目總檔網址) as 檔:
             with io.StringIO(檔.read().decode()) as 資料:
                 for row in DictReader(資料):
