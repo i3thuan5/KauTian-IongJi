@@ -30,6 +30,8 @@ class 教典字物件:
         yield from cls.又見音表()
         yield from cls.詞彙方言差()
         yield from cls.語音方言差()
+        '內政部 宗教百景'
+        yield from 擲出字物件('𰹬', 'tsng7')
 
     #
     # 主編碼,屬性,詞目,音讀,文白屬性,部首
