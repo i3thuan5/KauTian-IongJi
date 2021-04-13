@@ -1,5 +1,7 @@
+from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from django.db import models
+from django.core.exceptions import ValidationError
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 用字 import 字典
 from 用字 import 建議
@@ -8,7 +10,7 @@ from 用字 import 建議
 class 用字表(models.Model):
     漢字 = models.CharField(max_length=5)
     羅馬字 = models.CharField(max_length=15)
-    分詞 = models.CharField(max_length=20)
+    分詞 = models.CharField(max_length=20, blank=True)
     _用字ê範圍 = 建議.全部分詞()
 
     @classmethod
@@ -21,16 +23,22 @@ class 用字表(models.Model):
             return True
         return cls.objects.filter(分詞=字分詞).exists()
 
-    def save(self, *args, **kwargs):
+    def clean(self):
         # 提掉舊的輕聲規範
         羅馬字 = self.羅馬字.lstrip('0')
+        try:
+            詞物件 = 拆文分析器.對齊詞物件(self.漢字, 羅馬字)
+        except 解析錯誤:
+            raise ValidationError('漢羅ài攏是一ê字')
+        if len(詞物件.篩出字物件()) > 1:
+            raise ValidationError('漢羅ài攏是一ê字')
         字臺羅物件 = (
-            拆文分析器.對齊字物件(self.漢字, 羅馬字)
+            詞物件.篩出字物件()[0]
             .轉音(臺灣閩南語羅馬字拼音)
         )
         字臺羅物件.輕聲標記 = False
         self.分詞 = 字臺羅物件.看分詞()
-        super(用字表, self).save(*args, **kwargs)
+        super().clean()
 
     @classmethod
     def 這馬(cls):
