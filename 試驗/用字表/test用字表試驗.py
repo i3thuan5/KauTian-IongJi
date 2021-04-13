@@ -74,6 +74,6 @@ class 用字表試驗(TestCase):
 
 
 def 用字表create(漢字, 羅馬字):
-    ji = 用字表(漢字='媠', 羅馬字='khiáu')
+    ji = 用字表(漢字=漢字, 羅馬字=羅馬字)
     ji.full_clean()
     ji.save()
