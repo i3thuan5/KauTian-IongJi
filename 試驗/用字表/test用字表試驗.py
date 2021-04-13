@@ -1,4 +1,3 @@
-from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 from 用字.models import 用字表
 
 from django.test.testcases import TestCase
@@ -31,7 +30,7 @@ class 用字表試驗(TestCase):
         用字表.objects.create(漢字=漢, 羅馬字=羅)
         self.assertTrue(用字表.有這个字無(拆文分析器.對齊字物件(漢, 羅)))
 
-    def test_足濟字(self):
+    def test_一定àithinn字bēsái詞(self):
         漢 = '符合'
         羅 = 'hù-ha̍p'
         with self.assertRaises(ValidationError):
