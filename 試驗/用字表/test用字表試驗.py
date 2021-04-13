@@ -1,6 +1,5 @@
 from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 from 用字.models import 用字表
-from unittest.case import skip
 
 from django.test.testcases import TestCase
 from django.core.exceptions import ValidationError
