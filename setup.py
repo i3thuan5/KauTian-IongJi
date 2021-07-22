@@ -21,9 +21,9 @@ setup(
     version=版本,
     description='教典用字',
     long_description='教育部辭典台語用字',
-    author='薛丞宏',
-    author_email='ihcaoe@gmail.com',
-    url='https://xn--v0qr21b.xn--kpry57d/',
+    author='ÌTHUÂN KHOKI',
+    author_email='ithuan@ithuan.tw',
+    url='https://ithuan.tw',
     download_url=github網址,
     keywords=[
         '語料庫',
@@ -38,7 +38,7 @@ setup(
         'Topic :: Text Processing :: Linguistic',
     ],
     install_requires=[
-        'tai5-uan5_gian5-gi2_kang1-ku7',
+        'tai5-uan5_gian5-gi2_kang1-ku7>=1.0.0',
     ],
     package_data={
         '用字': [
