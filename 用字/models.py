@@ -16,7 +16,8 @@ class 用字表(models.Model):
     @classmethod
     def 有這个字無(cls, 字物件):
         字臺羅物件 = 字物件.轉音(臺灣閩南語羅馬字拼音)
-        字臺羅物件.音 = 字臺羅物件.音.lstrip('0')
+        字臺羅物件.型 = 字臺羅物件.型.lstrip('-')
+        字臺羅物件.音 = 字臺羅物件.音.lstrip('0').lstrip('-')
         字臺羅物件.輕聲標記 = False
         字分詞 = 字臺羅物件.看分詞()
         if 字分詞 in cls._用字ê範圍:
@@ -25,9 +26,10 @@ class 用字表(models.Model):
 
     def clean(self):
         # 提掉舊的輕聲規範
-        羅馬字 = self.羅馬字.lstrip('0')
+        羅馬字 = self.羅馬字.lstrip('0').lstrip('-')
+        漢字 = self.漢字.lstrip('-')
         try:
-            詞物件 = 拆文分析器.對齊詞物件(self.漢字, 羅馬字)
+            詞物件 = 拆文分析器.對齊詞物件(漢字, 羅馬字)
         except 解析錯誤:
             raise ValidationError('漢羅ài攏是一ê字')
         if len(詞物件.篩出字物件()) > 1:
