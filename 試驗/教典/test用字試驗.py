@@ -1,4 +1,5 @@
 from 臺灣言語工具.基本物件.字 import 字
+from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 用字 import 教典
 from unittest.case import skip, TestCase
 
@@ -53,3 +54,10 @@ class 用字試驗(TestCase):
 
     def test_那卡西ながし(self):
         self.assertFalse(教典.有這个字無(字('那', 'な')))
+
+    def test_句物件(self):
+        hanji = '林--先-生'
+        lomaji = 'Lîm--sian-sinn'
+        句物件 = 拆文分析器.建立句物件(hanji, lomaji)
+        for 字物件 in 句物件.篩出字物件():
+            self.assertTrue(教典.有這个字無(字物件), 字物件)
