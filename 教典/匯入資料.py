@@ -10,7 +10,7 @@ from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 
 def 產生教典json():
-    教典檔名 = join(dirname(abspath(__file__)), '用字', '教典.json')
+    教典檔名 = join(dirname(abspath(__file__)), '..', '用字', '教典.json')
 
     全部用字 = []
 
