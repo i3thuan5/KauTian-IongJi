@@ -23,6 +23,14 @@ class 教典字物件:
             phe = ji.hanlo.lower(), ji.lomaji.lower()
             if ji.hanlo not in 標點符號:
                 yield phe
+        piaute = kiatko['語音差異'][0]
+        hanjiui = piaute.index('漢字')
+        for tsua in kiatko['語音差異'][1:]:
+            han = tsua[hanjiui]
+            for lo_tsong in tsua[hanjiui+1:]:
+                if lo_tsong.strip():
+                    for lo in lo_tsong.split(','):
+                        yield han, lo
 
     def _tshue_ji(self, kiatko):
         for mia, pio in kiatko.items():
