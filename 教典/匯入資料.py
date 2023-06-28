@@ -67,8 +67,13 @@ class 教典字物件:
                 continue
             if mia == '詞目':
                 luihingui = piaute.index('詞目類型')
+                tiaukiann = lambda tsua: tsua[luihingui] != '附錄'
+            elif mia == '名':
+                luihingui = piaute.index('類型')
+                eingtit = ['又', '官', '文', '泉', '甘', '白', '不標', ]
+                tiaukiann = lambda tsua: tsua[luihingui] in eingtit
             else:
-                luihingui = None
+                tiaukiann = lambda tsua: True
             for tsua in pio[1:]:
                 try:
                     hanji = tsua[hanjiui]
@@ -79,10 +84,7 @@ class 教典字物件:
                 for lomaji in lomajitin.split('/'):
                     try:
                         for ji in Ku(hanji, lomaji).thianji():
-                            if luihingui is None:
+                            if tiaukiann(tsua):
                                 yield ji
-                            else:
-                                if tsua[luihingui] != '附錄':
-                                    yield ji
                     except TuiBeTse:
                         pass
