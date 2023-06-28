@@ -3,7 +3,7 @@ import io
 import json
 from urllib.request import urlopen
 from pyexcel_ods3 import get_data
-from kesi import Ku, TuiBeTse
+from kesi import Ku, TuiBeTse, kam_haphuat
 from kesi.butkian.kongiong import 標點符號
 from os.path import join, abspath, dirname
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
@@ -15,10 +15,12 @@ def 產生教典json():
     全部用字 = []
 
     for han, lo in set(教典字物件().全部資料()):
-        字物件 = 拆文分析器.建立字物件(han.lstrip('-'), lo.lstrip('-'))
-        全部用字.append(
-            字物件.看分詞()
-        )
+        han, lo = han.lstrip('-'), lo.lstrip('-')
+        if kam_haphuat(lo):
+            字物件 = 拆文分析器.建立字物件(han, lo)
+            全部用字.append(
+                字物件.看分詞()
+            )
     with open(教典檔名, 'w') as 檔案:
         json.dump(
             sorted(全部用字), 檔案,
