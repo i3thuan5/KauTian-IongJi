@@ -16,7 +16,7 @@ class 字典:
         return self.有這對應無(字物件.型, 字物件.音)
 
     def 有這對應無(self, han, lo):
-        ku = Ku(han.lstrip('-'), lo.lstrip('0').lstrip('-')).TL()
+        ku = Ku(han.lstrip('-').lower(), lo.lstrip('0').lstrip('-').lower()).TL()
         字物件 = 拆文分析器.建立字物件(ku.hanlo, ku.lomaji)
         return 字物件.看分詞() in self.全部分詞()
 
