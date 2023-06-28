@@ -71,7 +71,9 @@ class 教典字物件:
             elif mia == '名':
                 luihingui = piaute.index('類型')
                 eingtit = ['又', '官', '文', '泉', '甘', '白', '不標', ]
-                tiaukiann = lambda tsua: tsua[luihingui] in eingtit
+                tiaukiann = lambda tsua: (
+                    luihingui>= len(tsua) or tsua[luihingui] in eingtit
+                )
             else:
                 tiaukiann = lambda tsua: True
             for tsua in pio[1:]:
