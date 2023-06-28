@@ -48,7 +48,7 @@ class 教典字物件:
                 for lomaji in lomajitin.split('/'):
                     try:
                         for ji in Ku(hanji, lomaji).thianji():
-                            if luihing and tsua[luihingui] != '附錄':
+                            if luihingui and tsua[luihingui] != '附錄':
                                 yield ji
                     except TuiBeTse:
                         pass
