@@ -1,5 +1,4 @@
 import json
-from kesi import Ku
 from 用字.公家變數 import 教典檔名
 from 用字.標點規範 import 提全部標點
 from 用字.書寫 import tsingkuihua
