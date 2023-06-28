@@ -1,9 +1,7 @@
-from 用字.公家變數 import 甘字典檔名
 import json
 from 用字.公家變數 import 教典檔名
 from 用字.標點規範 import 提全部標點
 from 臺灣言語工具.羅馬字 import 新白話字
-from 用字.公家變數 import 教典名姓檔名
 
 
 class 字典:
