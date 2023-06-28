@@ -72,7 +72,8 @@ class 教典字物件:
                 luihingui = piaute.index('類型')
                 eingtit = ['又', '官', '文', '泉', '甘', '白', '不標', ]
                 tiaukiann = lambda tsua: (
-                    luihingui>= len(tsua) or tsua[luihingui] in eingtit
+                    tsua[hanjiui] not in ['兔', '𠕆', ] and
+                    (luihingui>= len(tsua) or tsua[luihingui] in eingtit)
                 )
             else:
                 tiaukiann = lambda tsua: True
