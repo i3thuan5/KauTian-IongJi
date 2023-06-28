@@ -19,29 +19,36 @@ class 教典字物件:
             with io.BytesIO(檔.read()) as 資料:
                 kiatko = get_data(資料)
 
-        for mia, ji in self._tshue_ji(kiatko):
+        for ji in self._tshue_ji(kiatko):
             phe = ji.hanlo.lower(), ji.lomaji.lower()
             if ji.hanlo not in 標點符號:
                 yield phe
 
     def _tshue_ji(self, kiatko):
         for mia, pio in kiatko.items():
+            if mia == '漢字羅馬字對應':
+                continue
             piaute = pio[0]
             try:
                 hanjiui = piaute.index('漢字')
                 lomajiui = piaute.index('羅馬字')
             except ValueError:
                 continue
+            if mia == '詞目':
+                luihingui = piaute.index('詞目類型')
+            else:
+                luihingui = None
             for tsua in pio[1:]:
                 try:
                     hanji = tsua[hanjiui]
                     lomajitin = tsua[lomajiui]
                 except IndexError:
-                    '無羅馬字，所以tsua無平長'
+                    '無羅馬字ê時，tsua無平長'
                     continue
                 for lomaji in lomajitin.split('/'):
                     try:
                         for ji in Ku(hanji, lomaji).thianji():
-                            yield mia, ji
+                            if luihing and tsua[luihingui] != '附錄':
+                                yield ji
                     except TuiBeTse:
                         pass
