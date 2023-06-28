@@ -25,6 +25,7 @@ jobs:
   include:
   - stage: deploy
     name: "pypi"
+    if: branch ~= /\d+\.\d+\.\d+/
     env: TOX_ENV=
     install: skip
     script: skip
@@ -37,6 +38,5 @@ jobs:
         secure: qHgTAsZN2Q5zBWYiYP7T0+Fu9Cm480yYsjCFWDGIcLW4KQOCVen9M1vVyRWCNoo+YX2f1LG9a2Na8RqRbxqDyQZ84wzpzLWCnwHUVDuv+GuyM387l/nM2sduuLtaYpSaUgGZ5P0SzCNdgVyfZI9erovFZLrKmei9yOr4LJg1gagjSUZXsY1ZLKxeTfZsrcpTE54jC3TpIvHXQhQP4A7LMcwU4/W5L7DB5kAdJMo5ZXMFRjQkY5agTZMoGWKprXdLreixLgOBwTxbgBYmjDB/zUksB8qxYxUMDc1YI1scqy7A9ALNmXHMEIynIl2hQ3OaGHk7e4yuIli81MieP5lzXbWT9AD6oXTOykdcgHErRzqfV+sBeFgoJl13mSOcr1ZrzRXH8xR4gaGWGq+EpUIFSIa/fyKRME82MBBYX9dSbbuxFM3Jtsq/3DBOdzxB3iqFb9OJyjv071NeltZU4lXT1W3w3VMGvoEn9yeEUHngpT3fef8frTQhIQVMAOB0/s3M0y4AHVnZT/5zNBxg3/2JvM1NZzKCud18Pc/0oEgBa3fhO/1TC1MKqdsEHN0v0fPmqlS2q+2YbvMjXbZ+Udss4jVWJDgLmLVa1OFvwDiKsogFWEZvANZ9dcdtu7Iu+mF1Xmm4pxoGynH89F4s0T5mRC+x+5p/U3p3wiphKYhrANM=
       on:
         tags: true
-        condition: $TOX_ENV = testDjango
         distributions: sdist bdist_wheel
         repo: i3thuan5/kau3-tian2_iong7-ji7
