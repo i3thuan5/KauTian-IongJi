@@ -1,4 +1,5 @@
 from kesi import Ku
+from 用字.書寫 import tsingkuihua
 from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from django.db import models
@@ -20,8 +21,8 @@ class 用字表(models.Model):
 
     @classmethod
     def 有這對應無(cls, han, lo):
-        ku = Ku(han.lstrip('-').lower(), lo.lstrip('0').lstrip('-').lower()).TL()
-        字物件 = 拆文分析器.建立字物件(ku.hanlo, ku.lomaji)
+        han, lo = tsingkuihua(han, lo)
+        字物件 = 拆文分析器.建立字物件(han, lo)
         字分詞 = 字物件.看分詞()
         if 字分詞 in cls._用字ê範圍:
             return True
