@@ -1,4 +1,4 @@
-from kesi import Ku
+from kesi import Ku, TuiBeTse
 from 用字.書寫 import tsingkuihua
 from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
@@ -29,21 +29,15 @@ class 用字表(models.Model):
         return cls.objects.filter(分詞=字分詞).exists()
 
     def clean(self):
-        # 提掉舊的輕聲規範
-        羅馬字 = self.羅馬字.lstrip('0').lstrip('-').lower()
-        漢字 = self.漢字.lstrip('-').lower()
-        try:
-            詞物件 = 拆文分析器.對齊詞物件(漢字, 羅馬字)
-        except 解析錯誤:
-            raise ValidationError('漢羅ài攏是一ê字')
-        if len(詞物件.篩出字物件()) > 1:
-            raise ValidationError('漢羅ài攏是一ê字')
-        字臺羅物件 = (
-            詞物件.篩出字物件()[0]
-            .轉音(臺灣閩南語羅馬字拼音, '轉調符')
-        )
-        字臺羅物件.輕聲標記 = False
-        self.分詞 = 字臺羅物件.看分詞()
+        hantng = len(list(Ku(self.漢字).thianji()))
+        lotng = len(list(Ku(self.羅馬字).thianji()))
+        if hantng != 1 or lotng != 1:
+            raise ValidationError('漢羅攏ài拄好一ê字，漢字有{}字，羅馬字有{}字'.format(
+                hantng, lotng
+            ))
+        han, lo = tsingkuihua(self.漢字, self.羅馬字)
+        字物件 = 拆文分析器.建立字物件(han, lo)
+        self.分詞 = 字物件.看分詞()
         super().clean()
 
     @classmethod
