@@ -2,26 +2,30 @@ dist: jammy
 language: python
 python:
 - '3.8'
-env:
-- TOX_ENV=flake8
-- TOX_ENV=testPython
-- TOX_ENV=testDjango
-- TOX_ENV=checkmigration
 branches:
   only:
   - master
   - /\d+\.\d+\.\d+/
 install:
 - pip install tox python-coveralls
-before_script:
-- tox -e build
-script:
-- tox -e $TOX_ENV
 after_success:
 - coverage report
 - coveralls
 jobs:
   include:
+  - stage: flake8
+    name: "flake8"
+    script: tox -e flake8
+  - stage: test
+    name: "testPython"
+    before_script: tox -e build
+    script: tox -e testPython
+  - name: "testDjango"
+    before_script: tox -e build
+    script: tox -e testDjango
+  - name: "testDjangoCheckmigration"
+    before_script: tox -e build
+    script: tox -e checkmigration
   - stage: deploy
     name: "pypi"
     if: branch ~= /\d+\.\d+\.\d+/
