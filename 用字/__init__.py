@@ -1,8 +1,8 @@
 import json
 from 用字.公家變數 import 教典檔名
 from 用字.標點規範 import 提全部標點
-from 臺灣言語工具.羅馬字 import 新白話字
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
+from kesi import Ku
+from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 
 class 字典:
@@ -13,7 +13,7 @@ class 字典:
         return self._全部分詞
 
     def 有這个字無(self, 字物件):
-        return self.有這對應無(字臺羅物件.型, 字臺羅物件.音)
+        return self.有這對應無(字物件.型, 字物件.音)
 
     def 有這對應無(self, han, lo):
         ku = Ku(han.lstrip('-'), lo.lstrip('0').lstrip('-')).TL()
