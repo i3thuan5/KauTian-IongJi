@@ -2,7 +2,6 @@
 import json
 from os.path import join, abspath, dirname
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
-from 教典.匯入甘字典 import 甘字典字物件
 from 教典.匯入資料 import 教典字物件
 
 

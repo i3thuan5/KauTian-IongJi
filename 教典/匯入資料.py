@@ -33,8 +33,12 @@ class 教典字物件:
             except ValueError:
                 continue
             for tsua in pio[1:]:
-                hanji = tsua[hanjiui]
-                lomajitin = tsua[lomajiui]
+                try:
+                    hanji = tsua[hanjiui]
+                    lomajitin = tsua[lomajiui]
+                except IndexError:
+                    '無羅馬字，所以tsua無平長'
+                    continue
                 for lomaji in lomajitin.split('/'):
                     try:
                         for ji in Ku(hanji, lomaji).thianji():
