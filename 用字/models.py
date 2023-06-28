@@ -29,8 +29,8 @@ class 用字表(models.Model):
 
     def clean(self):
         # 提掉舊的輕聲規範
-        羅馬字 = self.羅馬字.lstrip('0').lstrip('-')
-        漢字 = self.漢字.lstrip('-')
+        羅馬字 = self.羅馬字.lstrip('0').lstrip('-').lower()
+        漢字 = self.漢字.lstrip('-').lower()
         try:
             詞物件 = 拆文分析器.對齊詞物件(漢字, 羅馬字)
         except 解析錯誤:
@@ -39,7 +39,7 @@ class 用字表(models.Model):
             raise ValidationError('漢羅ài攏是一ê字')
         字臺羅物件 = (
             詞物件.篩出字物件()[0]
-            .轉音(臺灣閩南語羅馬字拼音)
+            .轉音(臺灣閩南語羅馬字拼音, '轉調符')
         )
         字臺羅物件.輕聲標記 = False
         self.分詞 = 字臺羅物件.看分詞()
