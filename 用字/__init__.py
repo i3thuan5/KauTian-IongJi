@@ -1,7 +1,7 @@
 import json
+from kesi import Ku
 from 用字.公家變數 import 教典檔名
 from 用字.標點規範 import 提全部標點
-from kesi import Ku
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 

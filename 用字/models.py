@@ -1,3 +1,4 @@
+from kesi import Ku
 from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from django.db import models
@@ -15,11 +16,13 @@ class 用字表(models.Model):
 
     @classmethod
     def 有這个字無(cls, 字物件):
-        字臺羅物件 = 字物件.轉音(臺灣閩南語羅馬字拼音)
-        字臺羅物件.型 = 字臺羅物件.型.lstrip('-')
-        字臺羅物件.音 = 字臺羅物件.音.lstrip('0').lstrip('-')
-        字臺羅物件.輕聲標記 = False
-        字分詞 = 字臺羅物件.看分詞()
+        return cls.有這對應無(字物件.型, 字物件.音)
+
+    @classmethod
+    def 有這對應無(cls, han, lo):
+        ku = Ku(han.lstrip('-').lower(), lo.lstrip('0').lstrip('-').lower()).TL()
+        字物件 = 拆文分析器.建立字物件(ku.hanlo, ku.lomaji)
+        字分詞 = 字物件.看分詞()
         if 字分詞 in cls._用字ê範圍:
             return True
         return cls.objects.filter(分詞=字分詞).exists()
