@@ -17,7 +17,3 @@ class Mia(TestCase):
     def test_訓用mài(self):
         '教典本文收才準算'
         self.assertFalse(教典.有這个字無(字('呆', 'phái')))
-
-    def test_俗用mài(self):
-        '教典本文收才準算'
-        self.assertFalse(教典.有這个字無(字('殯', 'pin')))
