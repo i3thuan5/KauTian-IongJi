@@ -16,13 +16,13 @@ class 教典字物件:
 
     def 新教典ods(self):
         with urlopen(self.教典ods網址) as 檔:
-            with io.StringIO(檔.read().decode()) as 資料:
+            with io.BytesIO(檔.read()) as 資料:
                 kiatko = get_data(資料)
 
         for mia, ji in self._tshue_ji(kiatko):
             phe = ji.hanlo.lower(), ji.lomaji.lower()
             if ji.hanlo not in 標點符號:
-                return phe
+                yield phe
 
     def _tshue_ji(self, kiatko):
         for mia, pio in kiatko.items():
