@@ -55,7 +55,7 @@ class 教典字物件:
 
     def _tshue_ji(self, kiatko):
         for mia, pio in kiatko.items():
-            if mia == '漢字羅馬字對應':
+            if mia not in ['詞目', '又唸作', '合音唸作', '俗唸作', '詞彙比較', '名']:
                 continue
             piaute = pio[0]
             try:
