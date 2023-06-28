@@ -67,16 +67,21 @@ class 教典字物件:
                 continue
             if mia == '詞目':
                 luihingui = piaute.index('詞目類型')
-                tiaukiann = lambda tsua: tsua[luihingui] != '附錄'
+
+                def tiaukiann(tsua):
+                    return tsua[luihingui] != '附錄'
             elif mia == '名':
                 luihingui = piaute.index('類型')
-                eingtit = ['又', '官', '文', '泉', '甘', '白', '不標', ]
-                tiaukiann = lambda tsua: (
-                    tsua[hanjiui] not in ['兔', '𠕆', ] and
-                    (luihingui>= len(tsua) or tsua[luihingui] in eingtit)
-                )
+
+                def tiaukiann(tsua):
+                    eingtit = ['又', '官', '文', '泉', '甘', '白', '不標', ]
+                    return (
+                        tsua[hanjiui] not in ['兔', '𠕆', ] and
+                        (luihingui >= len(tsua) or tsua[luihingui] in eingtit)
+                    )
             else:
-                tiaukiann = lambda tsua: True
+                def tiaukiann(tsua):
+                    return True
             for tsua in pio[1:]:
                 try:
                     hanji = tsua[hanjiui]
