@@ -13,12 +13,12 @@ class 字典:
         return self._全部分詞
 
     def 有這个字無(self, 字物件):
-        字臺羅物件 = 字物件.轉音(新白話字).轉音(臺灣閩南語羅馬字拼音, '轉調符')
-        # 不檢查輕聲符
-        字臺羅物件.型 = 字臺羅物件.型.lstrip('-')
-        字臺羅物件.音 = 字臺羅物件.音.lstrip('0').lstrip('-')
-        字臺羅物件.輕聲標記 = False
-        return 字臺羅物件.看分詞() in self.全部分詞()
+        return self.有這對應無(字臺羅物件.型, 字臺羅物件.音)
+
+    def 有這對應無(self, han, lo):
+        ku = Ku(han.lstrip('-'), lo.lstrip('0').lstrip('-')).TL()
+        字物件 = 拆文分析器.建立字物件(ku.hanlo, ku.lomaji)
+        return 字物件.看分詞() in self.全部分詞()
 
 
 with open(教典檔名) as 檔案:
