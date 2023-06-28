@@ -6,17 +6,16 @@ env:
 - TOX_ENV=flake8
 - TOX_ENV=testPython
 - TOX_ENV=testDjango
-- TOX_ENV=build
 - TOX_ENV=checkmigration
 branches:
   only:
   - master
   - /\d+\.\d+\.\d+/
 install:
-- pip install tai5-uan5-gian5-gi2-kang1-ku7
 - pip install tox python-coveralls
+before_script:
+- tox -e build
 script:
-- python senn_json.py
 - tox -e $TOX_ENV
 after_success:
 - coverage report
@@ -28,6 +27,7 @@ jobs:
     if: branch ~= /\d+\.\d+\.\d+/
     env: TOX_ENV=
     install: skip
+    before_script: skip
     script: skip
     after_success: skip
     deploy:
