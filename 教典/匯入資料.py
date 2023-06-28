@@ -56,7 +56,7 @@ class 教典字物件:
                 for lomaji in lomajitin.split('/'):
                     try:
                         for ji in Ku(hanji, lomaji).thianji():
-                            if luihingui is not None:
+                            if luihingui is None:
                                 yield ji
                             else:
                                 if tsua[luihingui] != '附錄':
