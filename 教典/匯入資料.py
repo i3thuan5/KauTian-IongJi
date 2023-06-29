@@ -6,6 +6,7 @@ from pyexcel_ods3 import get_data
 from kesi import Ku, TuiBeTse, kam_haphuat
 from kesi.butkian.kongiong import 標點符號
 from os.path import join, abspath, dirname
+from 用字.書寫 import tsingkuihua
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 
@@ -43,9 +44,9 @@ class 教典字物件:
                 kiatko = get_data(資料)
 
         for ji in self._tshue_ji(kiatko):
-            phe = ji.hanlo.lower(), ji.lomaji.lower()
-            if ji.hanlo not in 標點符號:
-                yield phe
+            han, lo = tsingkuihua(ji.hanlo.lower(), ji.lomaji.lower())
+            if han not in 標點符號:
+                yield han, lo
         piaute = kiatko['語音差異'][0]
         hanjiui = piaute.index('漢字')
         for tsua in kiatko['語音差異'][1:]:
