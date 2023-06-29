@@ -8,9 +8,9 @@ from 用字.models import 用字表
 
 class 用字表加詞:
     def 用字表create(self, 漢字, 羅馬字):
-
         lang = User.objects.create_superuser(
-            'ithuan', 'ithuan@ithuan.tw', 'it')
+            'ithuan', 'ithuan@ithuan.tw', 'it'
+        )
         self.client.force_login(lang)
 
         autai_url = reverse('admin:用字_用字管理表_add')
