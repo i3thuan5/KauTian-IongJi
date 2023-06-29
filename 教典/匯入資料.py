@@ -6,8 +6,12 @@ from pyexcel_ods3 import get_data
 from kesi import Ku, TuiBeTse, kam_haphuat
 from kesi.butkian.kongiong import 標點符號
 from os.path import join, abspath, dirname
-from 用字.書寫 import tsingkuihua
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+
+
+def tsingkuihua(han, lo):
+    ku = Ku(han.lstrip('-').lower(), lo.lstrip('0').lstrip('-').lower()).TL()
+    return ku.hanlo, ku.lomaji
 
 
 def 產生教典json():
