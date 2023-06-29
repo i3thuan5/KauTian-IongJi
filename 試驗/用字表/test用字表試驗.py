@@ -1,19 +1,24 @@
-from 用字.models import 用字表
-
-from django.test.testcases import TestCase
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
+from django.test.testcases import TestCase
+from django.urls import reverse
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+from 用字.models import 用字表
 
 
 class 用字表加詞:
     def 用字表create(self, 漢字, 羅馬字):
-        # client = Client()
-        # client.login()
-        # huein = client.post()
-        # self.assertEqual(huein.status_code, 302)
-        ji = 用字表(漢字=漢字, 羅馬字=羅馬字)
-        ji.full_clean()
-        ji.save()
+
+        lang = User.objects.create_superuser(
+            'ithuan', 'ithuan@ithuan.tw', 'it')
+        self.client.force_login(lang)
+
+        autai_url = reverse('admin:用字_用字管理表_add')
+        response = self.client.post(
+            autai_url,
+            {'漢字': 漢字, '羅馬字': 羅馬字}
+        )
+        self.assertEqual(response.status_code, 302)
 
 
 class 用字表試驗(TestCase, 用字表加詞):
