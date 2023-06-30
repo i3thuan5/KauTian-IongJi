@@ -21,30 +21,37 @@ class 用字表加詞:
         self.assertEqual(response.status_code, 302)
 
 
+class 有本底建議ê字(TestCase, 用字表加詞):
+    def test_有這對應無(self):
+        self.assertTrue(教典.有這對應無('來', 'lâi'))
+    def test_有這个字無(self):
+        self.assertTrue(教典.有這个字無(拆文分析器.對齊字物件('來', 'lâi')))
+
+
 class 用字表試驗(TestCase, 用字表加詞):
 
     def test_無加字(self):
         漢 = '媠'
         羅 = 'khiáu'
-        self.assertFalse(用字表.有這个字無(拆文分析器.對齊字物件(漢, 羅))
+        self.assertFalse(用字表.有這對應無(漢, 羅))
 
     def test_加一字(self):
         漢 = '媠'
         羅 = 'khiáu'
         self.用字表create(漢字=漢, 羅馬字=羅)
-        self.assertTrue(用字表.有這个字無(拆文分析器.對齊字物件(漢, 羅))
+        self.assertTrue(用字表.有這對應無(漢, 羅))
 
     def test_數字調(self):
         漢 = '媠'
         羅 = 'khiau2'
         self.用字表create(漢字=漢, 羅馬字=羅)
-        self.assertTrue(用字表.有這个字無(拆文分析器.對齊字物件(漢, 羅))
+        self.assertTrue(用字表.有這對應無(漢, 羅))
 
     def test_大寫(self):
         漢 = '媠'
         羅 = 'Khiáu'
         self.用字表create(漢字=漢, 羅馬字=羅)
-        self.assertTrue(用字表.有這个字無(拆文分析器.對齊字物件(漢, 羅))
+        self.assertTrue(用字表.有這對應無(漢, 羅))
 
     def test_一定àithinn字bēsái詞(self):
         漢 = '符合'
@@ -56,34 +63,28 @@ class 用字表試驗(TestCase, 用字表加詞):
         漢 = '~'
         羅 = '―'
         self.用字表create(漢字=漢, 羅馬字=羅)
-        self.assertTrue(用字表.有這个字無(拆文分析器.對齊字物件(漢, 羅))
+        self.assertTrue(用字表.有這對應無(漢, 羅))
 
     def test_輕聲符(self):
         self.用字表create(漢字='媠', 羅馬字='--khiáu')
-        self.assertTrue(用字表.有這个字無(
-            拆文分析器.對齊字物件('媠', '--khiáu'))
+        self.assertTrue(用字表.有這對應無('媠', '--khiáu'))
 
     def test_輕聲符2(self):
         self.用字表create(漢字='媠', 羅馬字='--khiáu')
-        self.assertTrue(用字表.有這个字無(
-            拆文分析器.對齊字物件('媠', 'khiáu'))
+        self.assertTrue(用字表.有這對應無('媠', 'khiáu'))
 
     def test_輕聲符4(self):
         self.用字表create(漢字='媠', 羅馬字='khiáu')
-        self.assertTrue(用字表.有這个字無(
-            拆文分析器.對齊字物件('媠', '--khiáu'))
+        self.assertTrue(用字表.有這對應無('媠', '--khiáu'))
 
     def test_0輕聲符(self):
         self.用字表create(漢字='媠', 羅馬字='0khiáu')
-        self.assertTrue(用字表.有這个字無(
-            拆文分析器.對齊字物件('媠', '0khiáu'))
+        self.assertTrue(用字表.有這對應無('媠', '0khiáu'))
 
     def test_0輕聲符2(self):
         self.用字表create(漢字='媠', 羅馬字='0khiáu')
-        self.assertTrue(用字表.有這个字無(
-            拆文分析器.對齊字物件('媠', 'khiáu'))
+        self.assertTrue(用字表.有這對應無('媠', 'khiáu'))
 
     def test_0輕聲符4(self):
         self.用字表create(漢字='媠', 羅馬字='khiáu')
-        self.assertTrue(用字表.有這个字無(
-            拆文分析器.對齊字物件('媠', '0khiáu'))
+        self.assertTrue(用字表.有這對應無('媠', '0khiáu'))
