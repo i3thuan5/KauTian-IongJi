@@ -5,7 +5,7 @@ from urllib.request import urlopen
 from pyexcel_ods3 import get_data
 from kesi import Ku, TuiBeTse, kam_haphuat
 from kesi.butkian.kongiong import 標點符號
-from os.path import join, abspath, dirname, basename
+from os.path import join, abspath, dirname
 from csv import DictReader
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
@@ -37,7 +37,7 @@ def 產生教典json():
 
 class 教典字物件:
     教典ods網址 = 'https://sutian.moe.edu.tw/media/kautian.ods'
-    教典名màiti̍h = join(basename(__file__), 'mia-mai-tih.csv')
+    教典名màiti̍h = join(dirname(__file__), 'mia-mai-tih.csv')
 
     def 全部資料(self):
         yield from self.新教典ods()
