@@ -1,5 +1,4 @@
 from unittest.case import TestCase, skip
-from 臺灣言語工具.基本物件.字 import 字
 from 用字 import 標點
 
 
