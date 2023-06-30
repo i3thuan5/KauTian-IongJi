@@ -6,10 +6,10 @@ from 用字.models import 用字表
 class 設定試驗(TestCase):
 
     def test_預設開教典(self):
-        self.assertTrue(用字表.有這个字無(字('媠', 'suí')))
+        self.assertTrue(用字表.有這對應無('媠', 'suí'))
 
     def test_預設開標點(self):
-        self.assertTrue(用字表.有這个字無(字('！', '!')))
+        self.assertTrue(用字表.有這對應無('！', '!'))
 
     def test_預設開教典名姓(self):
-        self.assertTrue(用字表.有這个字無(字('靄', 'Ai2')))
+        self.assertTrue(用字表.有這對應無('靄', 'Ai2'))
