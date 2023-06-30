@@ -108,18 +108,25 @@ True
 
 
 ## 分開判斷
-### [教育部辭典](https://twblg.dict.edu.tw/holodict_new/)詞條、又音 kah 腔口差 ê 用字。
+### [教育部辭典](https://twblg.dict.edu.tw/holodict_new/)詞條、又音 kah 腔口差 kah 名姓 ê 用字。
 ```py3
-from 臺灣言語工具.基本物件.字 import 字
-from 用字 import 教典
-教典.有這个字無(字('來', 'lâi'))
+>>> from 用字 import 教典
+>>> 教典.有這對應無('來', 'lâi')
+True
+>>> from 臺灣言語工具.基本物件.字 import 字
+>>> 教典.有這个字無(字('來', 'lâi'))
+True
 ```
 
-### [教育部標點符號](https://language.moe.gov.tw/001/Upload/FILES/SITE_CONTENT/M0001/HAU/c2.htm) ê 設定。
+### [教育部標點符號](https://language.moe.gov.tw/001/Upload/FILES/SITE_CONTENT/M0001/HAU/c2.htm) ê 設定
+
 ```py3
-from 臺灣言語工具.基本物件.字 import 字
-from 用字 import 標點
-標點.有這个字無(字("「", '"'))
+>>> from 用字 import 標點
+>>> 標點.有這對應無('來', 'lâi')
+True
+>>> from 臺灣言語工具.基本物件.字 import 字
+>>> 標點.有這个字無(字("「", '"'))
+True
 ```
 
 ## Development 開發
