@@ -40,6 +40,7 @@ setup(
         'Topic :: Text Processing :: Linguistic',
     ],
     install_requires=[
+        'KeSi',
     ],
     package_data={
         '用字': [
