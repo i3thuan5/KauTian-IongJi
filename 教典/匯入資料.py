@@ -5,7 +5,8 @@ from urllib.request import urlopen
 from pyexcel_ods3 import get_data
 from kesi import Ku, TuiBeTse, kam_haphuat
 from kesi.butkian.kongiong import 標點符號
-from os.path import join, abspath, dirname
+from os.path import join, abspath, dirname, basename
+from csv import DictReader
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 
@@ -36,6 +37,7 @@ def 產生教典json():
 
 class 教典字物件:
     教典ods網址 = 'https://sutian.moe.edu.tw/media/kautian.ods'
+    教典名màiti̍h = join(basename(__file__), 'mia-mai-tih.csv')
 
     def 全部資料(self):
         yield from self.新教典ods()
@@ -77,11 +79,15 @@ class 教典字物件:
                     return tsua[luihingui] != '附錄'
             elif mia == '名':
                 luihingui = piaute.index('類型')
+                mài_ti̍h = set()
+                with open(self.教典名màiti̍h) as tong:
+                    for tsua in DictReader(tong):
+                        mài_ti̍h.add(tsua['漢字'])
 
                 def tiaukiann(tsua):
                     eingtit = ['又', '官', '文', '泉', '甘', '白', '不標', ]
                     return (
-                        tsua[hanjiui] not in ['兔', '𠕆', ] and
+                        tsua[hanjiui] not in mài_ti̍h and
                         (luihingui >= len(tsua) or tsua[luihingui] in eingtit)
                     )
             else:
