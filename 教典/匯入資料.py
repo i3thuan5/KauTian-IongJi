@@ -38,11 +38,11 @@ def 產生教典json():
 class 教典字物件:
     教典ods網址 = 'https://sutian.moe.edu.tw/media/kautian.ods'
     教典名màiti̍h = join(dirname(__file__), 'mia-mai-tih.csv')
+    其他來源csv = join(dirname(__file__), 'kithann.csv')
 
     def 全部資料(self):
         yield from self.新教典ods()
-        '教育部《咱來學臺灣閩南語：讀文章蓋趣味01》、內政部 宗教百景'
-        yield '𰹬', 'tsn̄g'
+        yield from self.其他來源()
 
     def 新教典ods(self):
         with urlopen(self.教典ods網址) as 檔:
@@ -107,3 +107,8 @@ class 教典字物件:
                                 yield ji
                     except TuiBeTse:
                         pass
+
+    def 其他來源(self):
+        with open(self.其他來源csv) as tong:
+            for tsua in DictReader(tong):
+                yield tsua['漢字'], tsua['羅馬字']
