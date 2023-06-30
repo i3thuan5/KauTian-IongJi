@@ -23,9 +23,10 @@ class 用字表加詞:
 
 class 有本底建議ê字(TestCase, 用字表加詞):
     def test_有這對應無(self):
-        self.assertTrue(教典.有這對應無('來', 'lâi'))
+        self.assertTrue(用字表.有這對應無('來', 'lâi'))
+
     def test_有這个字無(self):
-        self.assertTrue(教典.有這个字無(拆文分析器.對齊字物件('來', 'lâi')))
+        self.assertTrue(用字表.有這个字無(拆文分析器.對齊字物件('來', 'lâi')))
 
 
 class 用字表試驗(TestCase, 用字表加詞):

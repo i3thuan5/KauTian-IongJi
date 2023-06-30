@@ -14,7 +14,7 @@ class 用法試驗(TestCase):
         self.assertTrue(教典.有這个字無(拆文分析器.對齊字物件('來', 'Lâi')))
 
     def test_輕聲符(self):
-        self.assertTrue(教典.有這个字無(拆文分析器.對齊字物件('來', 'lai5', 輕聲標記=True)))
+        self.assertTrue(教典.有這个字無(拆文分析器.對齊字物件('來', '--lai5')))
 
     def test_舊輕聲(self):
         self.assertTrue(教典.有這个字無(拆文分析器.對齊字物件('來', '0lai5')))
@@ -25,7 +25,7 @@ class 用法試驗(TestCase):
     def test_無實調(self):
         self.assertTrue(教典.有這个字無(拆文分析器.對齊字物件('啦', 'lah4')))
 
-    def test_羅馬字佮羅馬拆文分析器.對齊字物件(self):
+    def test_羅馬字佮羅馬字(self):
         self.assertFalse(教典.有這个字無(拆文分析器.對齊字物件('lai5', 'lai5')))
 
     def test_句物件應用(self):
