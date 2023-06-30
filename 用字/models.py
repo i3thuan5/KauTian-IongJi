@@ -2,7 +2,6 @@ from kesi import Ku
 from 用字.書寫 import tsingkuihua
 from django.db import models
 from django.core.exceptions import ValidationError
-from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 用字 import 字典
 from 用字 import 建議
 
@@ -20,11 +19,9 @@ class 用字表(models.Model):
     @classmethod
     def 有這對應無(cls, han, lo):
         han, lo = tsingkuihua(han, lo)
-        字物件 = 拆文分析器.建立字物件(han, lo)
-        字分詞 = 字物件.看分詞()
-        if 字分詞 in cls._用字ê範圍:
+        if (han, lo) in cls._用字ê範圍:
             return True
-        return cls.objects.filter(分詞=字分詞).exists()
+        return cls.objects.filter(漢字=han, 羅馬字=lo).exists()
 
     def clean(self):
         hantng = len(list(Ku(self.漢字).thianji()))
@@ -33,9 +30,7 @@ class 用字表(models.Model):
             raise ValidationError('漢羅攏ài拄好一ê字，漢字有{}字，羅馬字有{}字'.format(
                 hantng, lotng
             ))
-        han, lo = tsingkuihua(self.漢字, self.羅馬字)
-        字物件 = 拆文分析器.建立字物件(han, lo)
-        self.分詞 = 字物件.看分詞()
+        self.漢字, self.羅馬字 = tsingkuihua(self.漢字, self.羅馬字)
         super().clean()
 
     @classmethod

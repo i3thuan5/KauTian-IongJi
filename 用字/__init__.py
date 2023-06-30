@@ -2,7 +2,6 @@ import json
 from 用字.公家變數 import 教典檔名
 from 用字.標點規範 import 提全部標點
 from 用字.書寫 import tsingkuihua
-from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 
 class 字典:
@@ -17,8 +16,7 @@ class 字典:
 
     def 有這對應無(self, han, lo):
         han, lo = tsingkuihua(han, lo)
-        字物件 = 拆文分析器.建立字物件(han, lo)
-        return 字物件.看分詞() in self.全部分詞()
+        return (han, lo) in self.全部分詞()
 
 
 with open(教典檔名) as 檔案:
