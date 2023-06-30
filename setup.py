@@ -40,7 +40,6 @@ setup(
         'Topic :: Text Processing :: Linguistic',
     ],
     install_requires=[
-        'tai5-uan5_gian5-gi2_kang1-ku7>=1.0.0',
     ],
     package_data={
         '用字': [
