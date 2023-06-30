@@ -137,5 +137,6 @@ True
 
 ```bash
 tox -e build
-tox -e testDjango
+tox -e testSiuSu
+tox -e testTsingHap
 ```
