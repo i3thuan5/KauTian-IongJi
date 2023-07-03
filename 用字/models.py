@@ -10,7 +10,7 @@ class 用字表(models.Model):
     漢字 = models.CharField(max_length=5)
     羅馬字 = models.CharField(max_length=15)
     分詞 = models.CharField(max_length=20, blank=True)
-    _用字ê範圍 = 建議.全部分詞()
+    _用字ê範圍 = 建議.全部對照()
 
     @classmethod
     def 有這个字無(cls, 字物件):
@@ -35,10 +35,10 @@ class 用字表(models.Model):
 
     @classmethod
     def 這馬(cls):
-        return 字典(cls.全部分詞())
+        return 字典(cls.全部對照())
 
     @classmethod
-    def 全部分詞(cls):
+    def 全部對照(cls):
         tsuanpoo = set(cls._用字ê範圍)
         for ji in cls.objects.values_list('漢字', '羅馬字'):
             tsuanpoo.add(tuple(ji))
