@@ -19,8 +19,15 @@ class 字典:
         return (han, lo) in self.全部分詞()
 
 
-with open(教典檔名) as 檔案:
-    教典 = 字典(json.load(檔案))
+def _thakkautian():
+    jitian = set()
+    with open(教典檔名) as 檔案:
+        for ji in json.load(檔案):
+            jitian.add(tuple(ji))
+    return 字典(jitian)
+
+
+教典 = _thakkautian()
 標點 = 字典(提全部標點())
 建議 = 字典(教典.全部分詞() | 標點.全部分詞())
 
