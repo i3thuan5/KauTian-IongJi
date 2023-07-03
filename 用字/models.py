@@ -9,7 +9,6 @@ from 用字 import 建議
 class 用字表(models.Model):
     漢字 = models.CharField(max_length=5)
     羅馬字 = models.CharField(max_length=15)
-    分詞 = models.CharField(max_length=20, blank=True)
     _用字ê範圍 = 建議.全部對照()
 
     class Meta:
