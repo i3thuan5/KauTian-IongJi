@@ -12,6 +12,11 @@ class 用字表(models.Model):
     分詞 = models.CharField(max_length=20, blank=True)
     _用字ê範圍 = 建議.全部對照()
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['漢字', '羅馬字'], name='tuitsiau'),
+        ]
+
     @classmethod
     def 有這个字無(cls, 字物件):
         return cls.有這對應無(字物件.型, 字物件.音)
