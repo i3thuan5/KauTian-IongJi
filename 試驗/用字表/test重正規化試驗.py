@@ -7,4 +7,4 @@ class 這馬表試驗(TestCase, 用字表加詞):
 
     def test_有正規化(self):
         self.用字表create(漢字='來', 羅馬字='lâi')
-        call_command()
+        call_command('用字表重正規化')
