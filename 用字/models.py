@@ -39,4 +39,7 @@ class 用字表(models.Model):
 
     @classmethod
     def 全部分詞(cls):
-        return cls._用字ê範圍 | set(cls.objects.values_list('分詞', flat=True))
+        tsuanpoo = set(cls._用字ê範圍)
+        for ji in cls.objects.values_list('漢字', '羅馬字'):
+            tsuanpoo.add(tuple(ji))
+        return tsuanpoo
