@@ -12,7 +12,7 @@ def 揣工具包(頭):
     return 工具包
 
 
-github網址 = 'https://github.com/i3thuan5/kau3-tian2_iong7-ji7'
+github網址 = 'https://github.com/i3thuan5/KauTian-IongJi/'
 
 
 setup(
@@ -30,21 +30,21 @@ setup(
         'Taiwan', 'Natural Language', 'Corpus',
     ],
     classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Operating System :: Unix',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        'Development Status :: 5 - Production/Stable',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Framework :: Django :: 4.2',
         'Topic :: Text Processing',
         'Topic :: Text Processing :: Linguistic',
     ],
     install_requires=[
-        'tai5-uan5_gian5-gi2_kang1-ku7>=1.0.0',
+        'KeSi',
     ],
     package_data={
         '用字': [
             '教典.json',
-            '教典名姓.json',
-            '甘字典.json',
         ],
     }
 )

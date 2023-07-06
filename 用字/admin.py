@@ -13,8 +13,8 @@ class 用字管理表(用字表):
 
 class 用字表後台(admin.ModelAdmin):
     # change list
-    list_display = ['id', '漢字', '羅馬字', '分詞', ]
-    search_fields = ['id', '漢字', '羅馬字', '分詞', ]
+    list_display = ['id', '漢字', '羅馬字',]
+    search_fields = ['id', '漢字', '羅馬字',]
     # change view
     fields = ('漢字', '羅馬字',)
 

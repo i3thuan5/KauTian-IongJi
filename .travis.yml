@@ -17,12 +17,12 @@ jobs:
     name: "flake8"
     script: tox -e flake8
   - stage: test
-    name: "testPython"
+    name: "testSiuSu"
     before_script: tox -e build
-    script: tox -e testPython
-  - name: "testDjango"
+    script: tox -e testSiuSu
+  - name: "testTsingHap"
     before_script: tox -e build
-    script: tox -e testDjango
+    script: tox -e testTsingHap
   - name: "testDjangoCheckmigration"
     before_script: tox -e build
     script: tox -e checkmigration
