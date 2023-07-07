@@ -74,7 +74,9 @@ class 教典字物件:
                 luihingui = piaute.index('詞目類型')
 
                 def tiaukiann(tsua):
-                    return tsua[luihingui] != '附錄'
+                    return tsua[luihingui] != '附錄' or (
+                        tsua[luihingui] == '附錄' and len(tsua[hanjiui]) == 1
+                    )
             elif mia == '名':
                 luihingui = piaute.index('類型')
                 mài_ti̍h = set()
