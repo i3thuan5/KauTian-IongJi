@@ -30,9 +30,8 @@ jobs:
     name: "pypi"
     if: branch ~= /\d+\.\d+\.\d+/
     env: TOX_ENV=
-    install: skip
     before_script: skip
-    script: skip
+    script: tox -e build
     deploy:
       provider: pypi
       skip_cleanup: true
