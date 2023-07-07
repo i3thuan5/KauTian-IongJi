@@ -8,9 +8,6 @@ branches:
   - /\d+\.\d+\.\d+/
 install:
 - pip install tox python-coveralls
-after_success:
-- coverage report
-- coveralls
 jobs:
   include:
   - stage: flake8
@@ -23,6 +20,9 @@ jobs:
   - name: "testTsingHap"
     before_script: tox -e build
     script: tox -e testTsingHap
+    after_success:
+    - coverage report
+    - coveralls
   - name: "testDjangoCheckmigration"
     before_script: tox -e build
     script: tox -e checkmigration
@@ -33,7 +33,6 @@ jobs:
     install: skip
     before_script: skip
     script: skip
-    after_success: skip
     deploy:
       provider: pypi
       skip_cleanup: true
