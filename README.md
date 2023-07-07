@@ -1,6 +1,6 @@
 # KauTian-IongJi 教典用字
 
-這个套件包含[教典](https://sutian.moe.edu.tw/zh-hant/siongkuantsuguan/)附錄以外ê詞目羅馬字、詞彙比較kah名、佮[標點符號](https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/c2.htm)，kā咱掠出無合教典ê字！
+這个套件包含[教典](https://sutian.moe.edu.tw/zh-hant/siongkuantsuguan/)附錄以外ê詞目羅馬字、附錄百家姓、詞彙比較kah名、佮[標點符號](https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/c2.htm)，kā咱掠出無合教典ê字！
 
 ```py3
 >>> from 用字 import 建議
