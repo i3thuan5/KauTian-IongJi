@@ -22,3 +22,6 @@ class 用字試驗(TestCase):
 
     def test_無這音(self):
         self.assertFalse(教典.有這對應無('媠', 'sui'))
+
+    def test_姓(self):
+        self.assertTrue(教典.有這對應無('薛', 'sih'))
