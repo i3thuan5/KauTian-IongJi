@@ -42,4 +42,3 @@ jobs:
       on:
         tags: true
         distributions: sdist bdist_wheel
-        repo: i3thuan5/kau3-tian2_iong7-ji7
