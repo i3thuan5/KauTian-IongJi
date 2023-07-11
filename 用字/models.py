@@ -1,4 +1,5 @@
 from kesi import Ku
+from kesi import TuiBeTse
 from 用字.書寫 import tsingkuihua
 from django.db import models
 from django.core.exceptions import ValidationError
@@ -22,7 +23,10 @@ class 用字表(models.Model):
 
     @classmethod
     def 有這對應無(cls, han, lo):
-        han, lo = tsingkuihua(han, lo)
+        try:
+            han, lo = tsingkuihua(han, lo)
+        except TuiBeTse:
+            return False
         if (han, lo) in cls._用字ê範圍:
             return True
         return cls.objects.filter(漢字=han, 羅馬字=lo).exists()

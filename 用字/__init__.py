@@ -1,4 +1,5 @@
 import json
+from kesi import TuiBeTse
 from 用字.公家變數 import 教典檔名
 from 用字.標點規範 import 提全部標點
 from 用字.書寫 import tsingkuihua
@@ -15,7 +16,10 @@ class 字典:
         return self.有這對應無(字物件.型, 字物件.音)
 
     def 有這對應無(self, han, lo):
-        han, lo = tsingkuihua(han, lo)
+        try:
+            han, lo = tsingkuihua(han, lo)
+        except TuiBeTse:
+            return False
         return (han, lo) in self.全部對照()
 
 
