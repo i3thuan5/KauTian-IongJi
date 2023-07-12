@@ -1,6 +1,6 @@
 # KauTian-IongJi 教典用字
 
-這个套件包含[教典](https://sutian.moe.edu.tw/zh-hant/siongkuantsuguan/)附錄以外ê詞目羅馬字、詞彙比較kah名、佮[標點符號](https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/c2.htm)，kā咱掠出無合教典ê字！
+這个套件包含[教典](https://sutian.moe.edu.tw/zh-hant/siongkuantsuguan/)附錄以外ê詞目羅馬字、附錄百家姓、詞彙比較kah名、佮[標點符號](https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/c2.htm)，kā咱掠出無合教典ê字！
 
 ```py3
 >>> from 用字 import 建議
@@ -18,13 +18,11 @@ pip install kau3-tian2-iong7-ji7
 ## Usage 使用
 
 ```py3
->>> from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 >>> from 用字 import 建議
 
->>> 建議.有這个字無(拆文分析器.對齊字物件('來', 'lâi'))
+>>> 建議.有這對應無('來', 'lâi')
 True
-
->>> 建議.有這个字無(拆文分析器.對齊字物件('囡', 'kiánn'))
+>>> 建議.有這對應無('囡', 'kiánn')
 False
 ```
 
@@ -36,6 +34,8 @@ False
 
 >>> 建議.有這个字無(拆文分析器.對齊字物件('來', 'lâi'))
 True
+>>> 建議.有這个字無(拆文分析器.對齊字物件('囡', 'kiánn'))
+False
 ```
 若規句欲檢查
 ```py3
