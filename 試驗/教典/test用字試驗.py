@@ -27,3 +27,6 @@ class 用法試驗(TestCase):
 
     def test_羅馬字佮羅馬字(self):
         self.assertFalse(教典.有這對應無('lai5', 'lai5'))
+
+    def test_漢羅長短bôkâng(self):
+        self.assertFalse(教典.有這對應無('來', 'lai5-lai5'))
