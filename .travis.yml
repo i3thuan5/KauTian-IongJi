@@ -7,7 +7,7 @@ branches:
   - master
   - /\d+\.\d+\.\d+/
 install:
-- pip install tox python-coveralls
+- pip install tox
 jobs:
   include:
   - stage: flake8
@@ -18,11 +18,18 @@ jobs:
     before_script: tox -e build
     script: tox -e testSiuSu
   - name: "testTsingHap"
-    before_script: tox -e build
-    script: tox -e testTsingHap
-    after_success:
-    - coverage report
-    - coveralls
+    addons:
+      sonarcloud:
+        organization: "ithuan"
+        token: ${SONAR_TOKEN}
+    before_script: 
+    - tox -e build
+    - mkdir coverage-reports
+    - mv coverage.xml coverage-reports/coverage-build.xml
+    script: 
+    - tox -e testTsingHap
+    - mv coverage.xml coverage-reports/coverage-tsinghap.xml
+    - sonar-scanner
   - name: "testDjangoCheckmigration"
     before_script: tox -e build
     script: tox -e checkmigration
