@@ -19,9 +19,9 @@ jobs:
     script: tox -e testSiuSu
   - name: "testTsingHap"
     addons:
-    sonarcloud:
-      organization: "ithuan"
-      token: ${SONAR_TOKEN}
+      sonarcloud:
+        organization: "ithuan"
+        token: ${SONAR_TOKEN}
     before_script: 
     - tox -e build
     - mkdir coverage-reports
