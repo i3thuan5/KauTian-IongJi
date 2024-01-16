@@ -31,10 +31,10 @@ jobs:
     - mv coverage.xml coverage-reports/coverage-tsinghap.xml
     - >
       docker run --rm
-        -e SONARQUBE_SCANNER_PARAMS
-        -e SONAR_TOKEN="${SONAR_TOKEN}"
-        -v "`pwd`:/usr/src"
-        sonarsource/sonar-scanner-cli
+      -e SONARQUBE_SCANNER_PARAMS
+      -e SONAR_TOKEN="${SONAR_TOKEN}"
+      -v "`pwd`:/usr/src"
+      sonarsource/sonar-scanner-cli
   - name: "testDjangoCheckmigration"
     before_script: tox -e build
     script: tox -e checkmigration
